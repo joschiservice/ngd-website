@@ -2,9 +2,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Open_Sans } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
+import { useSpring, animated, easings } from '@react-spring/web'
+import backgroundImage from '../public/img/charging-stations.jpg'
+import {BsFillLightningChargeFill} from "react-icons/bs"
+import Link from "next/link";
 
 const roboto = Open_Sans({
-  weight: '600',
+  weight: '700',
   subsets: ['latin'],
 })
 
@@ -13,7 +17,21 @@ const roboto2 = Open_Sans({
   subsets: ['latin'],
 })
 
+const navLinkFont = Open_Sans({
+  weight: '300',
+  subsets: ['latin'],
+})
+
 export default function Home() {
+  const springs = useSpring({
+    from: { opacity: 0, y: -50 },
+    to: { opacity: 1, y: 0 },
+    config: {
+      easing: easings.easeOutExpo,
+      duration: 1500
+    }
+  })
+
   return (
     <>
       <Head>
@@ -23,9 +41,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div style={{textAlign: "center"}}>
-          <h1 className={roboto.className} style={{fontSize: "34px", marginBottom: 2}}>Hold tight! We are filling up our 🔋</h1>
-          <p className={roboto2.className} style={{opacity: 0.8}}>Or in other words: We are currently actively developing this website to reveal our plans to the world.</p>
+        <Image src={backgroundImage} alt="Charging stations" fill={true} style={{objectFit: "cover"}}/>
+        <div style={{position: "absolute", display: "flex", alignItems: "center", justifyContent: "center", transform: "translate(0, -50%)", top: "25%"}}>
+          <animated.div style={{textAlign: "center", ...springs}}>
+            <h1 className={roboto.className} style={{fontSize: "42px", marginBottom: 2}}>Hold tight! We are juicing up our 🔋</h1>
+            <p className={roboto2.className} style={{opacity: 0.8}}>We are currently actively developing this website to reveal our plans to the world.</p>
+          </animated.div>
+        </div>
+        <div style={{position: "absolute", bottom: 0, width: "100vw", padding: 18, display: "flex", justifyContent: "space-between"}}>
+          <BsFillLightningChargeFill className={styles.neonLogo} style={{fontSize: 28}} />
+          <div>
+            <Link href={"/imprint"} className={navLinkFont.className + " " + styles.navLink}>Imprint</Link>
+          </div>
         </div>
       </main>
     </>
