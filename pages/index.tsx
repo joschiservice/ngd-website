@@ -42,9 +42,9 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Image src={backgroundImage} alt="Charging stations" fill={true} style={{objectFit: "cover"}}/>
-        <div style={{position: "absolute", display: "flex", alignItems: "center", justifyContent: "center", transform: "translate(0, -50%)", top: "25%"}}>
+        <div style={{position: "absolute", display: "flex", alignItems: "center", justifyContent: "center", top: "25%", marginRight: "8px", marginLeft: "8px"}}>
           <animated.div style={{textAlign: "center", ...springs}}>
-            <h1 className={roboto.className} style={{fontSize: "42px", marginBottom: 2}}>Hold tight! We are juicing up our 🔋</h1>
+            <h1 className={roboto.className + " " + styles.title}>Hold tight! We are juicing up our 🔋</h1>
             <p className={roboto2.className} style={{opacity: 0.8}}>We are currently actively developing this website to reveal our plans to the world.</p>
           </animated.div>
         </div>
