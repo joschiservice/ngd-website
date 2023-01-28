@@ -45,7 +45,7 @@ export default function Home() {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/>
         <link rel="manifest" href="/favicon/site.webmanifest"/>
       </Head>
-      <main className={styles.main}>
+      <main className={styles.main} style={{position: "relative"}}>
         <Image src={backgroundImage} alt="Charging stations" fill={true} style={{objectFit: "cover"}}/>
         <div style={{position: "absolute", display: "flex", alignItems: "center", justifyContent: "center", top: "25%", marginRight: "8px", marginLeft: "8px"}}>
           <animated.div style={{textAlign: "center", ...springs}}>

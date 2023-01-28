@@ -17,21 +17,7 @@ const robotoText = Open_Sans({
   subsets: ['latin'],
 })
 
-const navLinkFont = Open_Sans({
-  weight: '300',
-  subsets: ['latin'],
-})
-
 export default function Imprint() {
-  const springs = useSpring({
-    from: { opacity: 0, y: -50 },
-    to: { opacity: 1, y: 0 },
-    config: {
-      easing: easings.easeOutExpo,
-      duration: 1500
-    }
-  })
-
   return (
     <>
       <Head>
