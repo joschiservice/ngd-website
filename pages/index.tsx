@@ -6,6 +6,7 @@ import { useSpring, animated, easings } from '@react-spring/web'
 import backgroundImage from '../public/img/charging-stations.jpg'
 import {BsFillLightningChargeFill} from "react-icons/bs"
 import Link from "next/link";
+import {signIn} from "next-auth/react";
 
 const roboto = Open_Sans({
   weight: '700',
