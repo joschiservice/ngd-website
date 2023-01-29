@@ -4,34 +4,140 @@ import backgroundImage from "@/public/img/tesla-rear-light.jpg";
 import hyundaiInStyleImage from "@/public/img/hyundai-in-style.jpg";
 import polestarImage from "@/public/img/polestar-night.jpg";
 import {animated} from "@react-spring/web";
-import {BsFillLightningChargeFill} from "react-icons/bs";
+import {BsFillLightningChargeFill, BsPlayBtn, BsLightbulb} from "react-icons/bs";
+import {FiArrowUpRight} from "react-icons/fi";
+import {TbChargingPile} from "react-icons/tb";
+import {MdOutlineElectricCar} from "react-icons/md"
+import {GiCarSeat} from "react-icons/gi"
 import Link from "next/link";
-import {Group, Stack, Text} from "@mantine/core";
+import {
+  Accordion,
+  Box,
+  Center,
+  Container,
+  Flex,
+  Grid,
+  Group,
+  SimpleGrid,
+  Space,
+  Stack,
+  Text,
+  Title
+} from "@mantine/core";
 import {useEffect, useRef, useState} from "react";
 import {useTimeout} from "@mantine/hooks";
+import {MdOutlineSmartDisplay} from "react-icons/md"
 
 export default function NewLandingPage() {
   return (
-    <div className={styles.main}>
-      <div style={{position: "relative", width: "55vw", height: "80vh", marginLeft: "auto", marginRight: 0, top: "50%"}}>
-        <HeroImages />
-      </div>
-      <div style={{position: "absolute", display: "flex", alignItems: "center", minWidth: "100vw", minHeight: "100%", marginRight: "8px", marginLeft: "8px", background: "linear-gradient(90deg, rgba(0,0,0,1) 44%, rgba(0,0,0,0) 100%)"}}>
-        <Stack mr={"6rem"} style={{maxWidth: "650px"}} spacing={0}>
-          <Text color="#339557" fw={600}>Unlock the full potential of your BEV/FCEV</Text>
-          <Text fw={500} fz="42px" color="white" mt="sm" style={{lineHeight: "50px"}}>Let&apos;s Elevate Your Driving Experience</Text>
-          <Text mt="sm">Transform your electric vehicle into a cutting-edge driving machine with our range of premium software & hardware upgrade products.</Text>
-        </Stack>
-      </div>
-      <div style={{position: "absolute", top: 0, width: "100vw", padding: 18, display: "flex", justifyContent: "space-between"}}>
-        <BsFillLightningChargeFill className={styles.neonLogo} style={{fontSize: 28}} />
-        <div>
-          <Link href={"/imprint"} className={styles.navLink}>Home</Link>
-          <Link href={"/imprint"} className={styles.navLink}>Blog</Link>
-          <Link href={"/imprint"} className={styles.navLink}>Imprint</Link>
+    <div style={{background: "black"}}>
+      <div className={styles.main}>
+        <div style={{position: "relative", width: "60vw", height: "80vh", marginLeft: "auto", marginRight: 0, top: "50%"}}>
+          <HeroImages />
         </div>
-        <div />
+        <div style={{position: "absolute", display: "flex", alignItems: "center", minWidth: "100vw", minHeight: "100%", background: "linear-gradient(90deg, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)"}}>
+          <Stack mr={"6rem"} style={{maxWidth: "650px"}} spacing={0}>
+            <Text color="#339557" fw={600}>Unlock the full potential of your BEV/FCEV</Text>
+            <Text fw={500} fz="42px" color="white" mt="sm" style={{lineHeight: "50px"}}>Let&apos;s Elevate Your Driving Experience</Text>
+            <Text mt="sm">Transform your electric vehicle into a cutting-edge driving machine with our range of premium software & hardware upgrade products.</Text>
+          </Stack>
+        </div>
+        <div style={{position: "absolute", top: 0, width: "100vw", padding: 18, display: "flex", justifyContent: "space-between"}}>
+          <BsFillLightningChargeFill className={styles.neonLogo} style={{fontSize: 28}} />
+          <div>
+            <Link href={"/imprint"} className={styles.navLink}>Home</Link>
+            <Link href={"/imprint"} className={styles.navLink}>Blog</Link>
+            <Link href={"/imprint"} className={styles.navLink}>Imprint</Link>
+          </div>
+          <div />
+        </div>
       </div>
+      <Container size="lg">
+        <Grid grow gutter={40} align="center">
+          <Grid.Col span={1}>
+            <Title size={34} color="white">{"There's much more to it than just driving from A to B"}</Title>
+          </Grid.Col>
+          <Grid.Col span={1}>
+            <Text size="sm">
+              Transform your car into a world of endless entertainment and innovation. With cutting-edge technology and seamless integration, every journey becomes an experience to remember. Say goodbye to mundane drives and hello to a new era of excitement and convenience.
+            </Text>
+          </Grid.Col>
+        </Grid>
+        <Space h={80} />
+        <SimpleGrid cols={3} mt="xl">
+          <Box bg="#121212" p="xl" style={{borderRadius: "8px"}}>
+            <GiCarSeat color="#339557" size={40} />
+            <Title order={3} mt={10} fw={400} color="white">Interior Upgrades</Title>
+            <Text size="sm" mt={12}>{"Unleash the full potential of your car with advanced tech! Transform your rides into tech-savvy masterpieces with seamless infotainment, ambient lighting, and cutting-edge upgrades. Experience the next level of driving excellence and elevate your journeys to new heights!"}</Text>
+            <Link href="/">
+              <Box>
+                <Box mt={12}
+                     sx={(theme) => ({
+                       display: "inline-flex",
+                       alignItems: "center",
+                       position: "relative",
+                       borderBottom: "2px solid rgba(0, 0, 0, 0)",
+                       '&:after': {
+                         content: "''",
+                         position: "absolute",
+                         width: "0",
+                         height: "2px",
+                         display: "block",
+                         marginTop: "25px",
+                         right: 0,
+                         background: "white",
+                         transition: "width .5s ease"
+                       },
+                       '&:hover:after': {
+                         width: "100%",
+                         left: "0",
+                         background: "white"
+                       }
+                     })}>
+                  <Text color="#ffff" size="sm">Read More</Text>
+                  <FiArrowUpRight style={{marginLeft: "6px"}} />
+                </Box>
+              </Box>
+            </Link>
+          </Box>
+          <Box bg="#121212" p="xl" style={{borderRadius: "8px"}}>
+            <TbChargingPile color="#339557" size={40} />
+            <Title order={3} mt={10} fw={400} color="white">Charging Infrastructure</Title>
+            <Text size="sm" mt={12}>{"Revolutionize your charging experience with our independent platform! Find the best nearby charging stations, rate them, and power up with ease. Say goodbye to charging headaches and hello to a smoother electric driving experience."}</Text>
+            <Link href="/">
+              <Flex mt={12} align="center">
+                <Text color="#ffff" opacity={0.9} size="sm">Read More</Text>
+                <FiArrowUpRight style={{marginLeft: "6px"}} />
+              </Flex>
+            </Link>
+          </Box>
+          <Box bg="#121212" p="xl" style={{borderRadius: "8px"}}>
+            <MdOutlineElectricCar color="#339557" size={40} />
+            <Title order={3} mt={10} fw={400} color="white">EV Conversions</Title>
+            <Text size="sm" mt={12}>{"Get ready for the ultimate driving experience. Say goodbye to gas costs and emissions and hello to a more sustainable, efficient ride. Stay tuned for more updates and join the future of driving today."}</Text>
+            <Link href="/">
+              <Flex mt={12} align="center">
+                <Text color="#ffff" opacity={0.9} size="sm">Read More</Text>
+                <FiArrowUpRight style={{marginLeft: "6px"}} />
+              </Flex>
+            </Link>
+          </Box>
+        </SimpleGrid>
+      </Container>
+      <Space h={80} />
+      <Container size="md">
+        <Title order={1} align={"center"} mb="lg" color="white">FAQ</Title>
+        <Accordion defaultValue="customization">
+          <Accordion.Item value="customization">
+            <Accordion.Control><Box display="flex" mr={8}><Title color="white" order={4}>Are you only building products for BEV/FHEV vehicles and why?</Title></Box></Accordion.Control>
+            <Accordion.Panel>
+              Yes and no. We will also release some products, which are independent of the type of vehicle, but we are going to primarily build products and prototypes for vehicles
+              using an alternative drive systems first. We have decided to go this way as we would like to help the world to complete the transition to emission-free vehicles
+              in the next coming years.
+            </Accordion.Panel>
+          </Accordion.Item>
+        </Accordion>
+      </Container>
     </div>
   )
 }
@@ -88,5 +194,45 @@ function HeroImages() {
         })
       }
     </>
+  )
+}
+
+function FeatureCard({title, description, href}: {title: string, description: string, href: string}) {
+  return (
+    <Box bg="#121212" p="xl" style={{borderRadius: "8px"}}>
+      <GiCarSeat color="#339557" size={40} />
+      <Title order={3} mt={10} fw={400} color="white">Interior Upgrades</Title>
+      <Text size="sm" mt={12}>{"Unleash the full potential of your car with advanced tech! Transform your rides into tech-savvy masterpieces with seamless infotainment, ambient lighting, and cutting-edge upgrades. Experience the next level of driving excellence and elevate your journeys to new heights!"}</Text>
+      <Link href="/">
+        <Box>
+          <Box mt={12}
+               sx={(theme) => ({
+                 display: "inline-flex",
+                 alignItems: "center",
+                 position: "relative",
+                 borderBottom: "2px solid rgba(0, 0, 0, 0)",
+                 '&:after': {
+                   content: "''",
+                   position: "absolute",
+                   width: "0",
+                   height: "2px",
+                   display: "block",
+                   marginTop: "25px",
+                   right: 0,
+                   background: "white",
+                   transition: "width .5s ease"
+                 },
+                 '&:hover:after': {
+                   width: "100%",
+                   left: "0",
+                   background: "white"
+                 }
+               })}>
+            <Text color="#ffff" size="sm">Read More</Text>
+            <FiArrowUpRight style={{marginLeft: "6px"}} />
+          </Box>
+        </Box>
+      </Link>
+    </Box>
   )
 }
