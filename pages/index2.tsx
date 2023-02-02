@@ -45,8 +45,8 @@ export default function NewLandingPage() {
         <div style={{position: "absolute", top: 0, width: "100vw", padding: 18, display: "flex", justifyContent: "space-between"}}>
           <BsFillLightningChargeFill className={styles.neonLogo} style={{fontSize: 28}} />
           <div>
-            <Link href={"/imprint"} className={styles.navLink}>Home</Link>
-            <Link href={"/imprint"} className={styles.navLink}>Blog</Link>
+            <Link href={"/"} className={styles.navLink}>Home</Link>
+            <Link href={"/blog"} className={styles.navLink}>Blog</Link>
             <Link href={"/imprint"} className={styles.navLink}>Imprint</Link>
           </div>
           <div />
@@ -65,63 +65,18 @@ export default function NewLandingPage() {
         </Grid>
         <Space h={80} />
         <SimpleGrid cols={3} mt="xl">
-          <Box bg="#121212" p="xl" style={{borderRadius: "8px"}}>
-            <GiCarSeat color="#339557" size={40} />
-            <Title order={3} mt={10} fw={400} color="white">Interior Upgrades</Title>
-            <Text size="sm" mt={12}>{"Unleash the full potential of your car with advanced tech! Transform your rides into tech-savvy masterpieces with seamless infotainment, ambient lighting, and cutting-edge upgrades. Experience the next level of driving excellence and elevate your journeys to new heights!"}</Text>
-            <Link href="/">
-              <Box>
-                <Box mt={12}
-                     sx={(theme) => ({
-                       display: "inline-flex",
-                       alignItems: "center",
-                       position: "relative",
-                       borderBottom: "2px solid rgba(0, 0, 0, 0)",
-                       '&:after': {
-                         content: "''",
-                         position: "absolute",
-                         width: "0",
-                         height: "2px",
-                         display: "block",
-                         marginTop: "25px",
-                         right: 0,
-                         background: "white",
-                         transition: "width .5s ease"
-                       },
-                       '&:hover:after': {
-                         width: "100%",
-                         left: "0",
-                         background: "white"
-                       }
-                     })}>
-                  <Text color="#ffff" size="sm">Read More</Text>
-                  <FiArrowUpRight style={{marginLeft: "6px"}} />
-                </Box>
-              </Box>
-            </Link>
-          </Box>
-          <Box bg="#121212" p="xl" style={{borderRadius: "8px"}}>
-            <TbChargingPile color="#339557" size={40} />
-            <Title order={3} mt={10} fw={400} color="white">Charging Infrastructure</Title>
-            <Text size="sm" mt={12}>{"Revolutionize your charging experience with our independent platform! Find the best nearby charging stations, rate them, and power up with ease. Say goodbye to charging headaches and hello to a smoother electric driving experience."}</Text>
-            <Link href="/">
-              <Flex mt={12} align="center">
-                <Text color="#ffff" opacity={0.9} size="sm">Read More</Text>
-                <FiArrowUpRight style={{marginLeft: "6px"}} />
-              </Flex>
-            </Link>
-          </Box>
-          <Box bg="#121212" p="xl" style={{borderRadius: "8px"}}>
-            <MdOutlineElectricCar color="#339557" size={40} />
-            <Title order={3} mt={10} fw={400} color="white">EV Conversions</Title>
-            <Text size="sm" mt={12}>{"Get ready for the ultimate driving experience. Say goodbye to gas costs and emissions and hello to a more sustainable, efficient ride. Stay tuned for more updates and join the future of driving today."}</Text>
-            <Link href="/">
-              <Flex mt={12} align="center">
-                <Text color="#ffff" opacity={0.9} size="sm">Read More</Text>
-                <FiArrowUpRight style={{marginLeft: "6px"}} />
-              </Flex>
-            </Link>
-          </Box>
+          <FeatureCard title="Interior Upgrades"
+                       description="Unleash the full potential of your car with advanced tech! Transform your rides into tech-savvy masterpieces with seamless infotainment, ambient lighting, and cutting-edge upgrades. Experience the next level of driving excellence and elevate your journeys to new heights!"
+                       href="/"
+                       icon={<GiCarSeat color="#339557" size={40} />} />
+          <FeatureCard title="Charging Infrastructure"
+                       description="Revolutionize your charging experience with our independent platform! Find the best nearby charging stations, rate them, and power up with ease. Say goodbye to charging headaches and hello to a smoother electric driving experience."
+                       href=""
+                       icon={<TbChargingPile color="#339557" size={40} />} />
+          <FeatureCard title="EV Conversions"
+                       description="Get ready for the ultimate driving experience. Say goodbye to gas costs and emissions and hello to a more sustainable, efficient ride. Stay tuned for more updates and join the future of driving today."
+                       href="/"
+                       icon={<MdOutlineElectricCar color="#339557" size={40} />} />
         </SimpleGrid>
       </Container>
       <Space h={80} />
@@ -197,13 +152,13 @@ function HeroImages() {
   )
 }
 
-function FeatureCard({title, description, href}: {title: string, description: string, href: string}) {
+function FeatureCard({title, description, href, icon}: {title: string, description: string, href: string, icon: any}) {
   return (
     <Box bg="#121212" p="xl" style={{borderRadius: "8px"}}>
-      <GiCarSeat color="#339557" size={40} />
-      <Title order={3} mt={10} fw={400} color="white">Interior Upgrades</Title>
-      <Text size="sm" mt={12}>{"Unleash the full potential of your car with advanced tech! Transform your rides into tech-savvy masterpieces with seamless infotainment, ambient lighting, and cutting-edge upgrades. Experience the next level of driving excellence and elevate your journeys to new heights!"}</Text>
-      <Link href="/">
+      {icon}
+      <Title order={3} mt={10} fw={400} color="white">{title}</Title>
+      <Text size="sm" mt={12}>{description}</Text>
+      <Link href={href}>
         <Box>
           <Box mt={12}
                sx={(theme) => ({
