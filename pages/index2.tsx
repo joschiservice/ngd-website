@@ -3,7 +3,7 @@ import Image from "next/image";
 import backgroundImage from "@/public/img/tesla-rear-light.jpg";
 import hyundaiInStyleImage from "@/public/img/hyundai-in-style.jpg";
 import polestarImage from "@/public/img/polestar-night.jpg";
-import {animated} from "@react-spring/web";
+import {animated, easings, useInView, useSpring} from "@react-spring/web";
 import {BsFillLightningChargeFill, BsPlayBtn, BsLightbulb} from "react-icons/bs";
 import {FiArrowUpRight} from "react-icons/fi";
 import {TbChargingPile} from "react-icons/tb";
@@ -29,12 +29,42 @@ import {useTimeout} from "@mantine/hooks";
 import {MdOutlineSmartDisplay} from "react-icons/md"
 
 export default function NewLandingPage() {
+  const fadeIn = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: {
+      easing: easings.easeOutExpo,
+      duration: 1500
+    }
+  })
+
+  const [featureItemsRef, featureItemsAnimation] = useInView(
+    () => ({
+      from: {
+        opacity: 0,
+        y: 100,
+      },
+      to: {
+        opacity: 1,
+        y: 0,
+      },
+      config: {
+        easing: easings.easeOutExpo,
+        duration: 1500
+      }
+    }),
+    {
+      rootMargin: '0% 0%',
+      once: true
+    }
+  )
+
   return (
     <div style={{background: "black"}}>
-      <div className={styles.main}>
-        <div style={{position: "relative", width: "60vw", height: "80vh", marginLeft: "auto", marginRight: 0, top: "50%"}}>
+      <animated.div className={styles.main}>
+        <animated.div style={{position: "relative", width: "60vw", height: "80vh", marginLeft: "auto", marginRight: 0, top: "50%", ...fadeIn}}>
           <HeroImages />
-        </div>
+        </animated.div>
         <div style={{position: "absolute", display: "flex", alignItems: "center", minWidth: "100vw", minHeight: "100%", background: "linear-gradient(90deg, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)"}}>
           <Stack mr={"6rem"} style={{maxWidth: "650px"}} spacing={0}>
             <Text color="#339557" fw={600}>Unlock the full potential of your BEV/FCEV</Text>
@@ -51,7 +81,7 @@ export default function NewLandingPage() {
           </div>
           <div />
         </div>
-      </div>
+      </animated.div>
       <Container size="lg">
         <Grid grow gutter={40} align="center">
           <Grid.Col span={1}>
@@ -64,20 +94,22 @@ export default function NewLandingPage() {
           </Grid.Col>
         </Grid>
         <Space h={80} />
-        <SimpleGrid cols={3} mt="xl">
-          <FeatureCard title="Interior Upgrades"
-                       description="Unleash the full potential of your car with advanced tech! Transform your rides into tech-savvy masterpieces with seamless infotainment, ambient lighting, and cutting-edge upgrades. Experience the next level of driving excellence and elevate your journeys to new heights!"
-                       href="/"
-                       icon={<GiCarSeat color="#339557" size={40} />} />
-          <FeatureCard title="Charging Infrastructure"
-                       description="Revolutionize your charging experience with our independent platform! Find the best nearby charging stations, rate them, and power up with ease. Say goodbye to charging headaches and hello to a smoother electric driving experience."
-                       href=""
-                       icon={<TbChargingPile color="#339557" size={40} />} />
-          <FeatureCard title="EV Conversions"
-                       description="Get ready for the ultimate driving experience. Say goodbye to gas costs and emissions and hello to a more sustainable, efficient ride. Stay tuned for more updates and join the future of driving today."
-                       href="/"
-                       icon={<MdOutlineElectricCar color="#339557" size={40} />} />
-        </SimpleGrid>
+        <animated.div ref={featureItemsRef} style={featureItemsAnimation}>
+          <SimpleGrid cols={3} mt="xl">
+            <FeatureCard title="Interior Upgrades"
+                         description="Unleash the full potential of your car with advanced tech! Transform your rides into tech-savvy masterpieces with seamless infotainment, ambient lighting, and cutting-edge upgrades. Experience the next level of driving excellence and elevate your journeys to new heights!"
+                         href="/"
+                         icon={<GiCarSeat color="#339557" size={40} />} />
+            <FeatureCard title="Charging Infrastructure"
+                         description="Revolutionize your charging experience with our independent platform! Find the best nearby charging stations, rate them, and power up with ease. Say goodbye to charging headaches and hello to a smoother electric driving experience."
+                         href=""
+                         icon={<TbChargingPile color="#339557" size={40} />} />
+            <FeatureCard title="EV Conversions"
+                         description="Get ready for the ultimate driving experience. Say goodbye to gas costs and emissions and hello to a more sustainable, efficient ride. Stay tuned for more updates and join the future of driving today."
+                         href="/"
+                         icon={<MdOutlineElectricCar color="#339557" size={40} />} />
+          </SimpleGrid>
+        </animated.div>
       </Container>
       <Space h={80} />
       <Container size="md">
