@@ -119,33 +119,38 @@ export default function NewLandingPage() {
         </SimpleGrid>
         <Space h={42} />
         <SimpleGrid cols={2}>
-          <SmallNewsItem />
-          <SmallNewsItem />
-          <SmallNewsItem />
-          <SmallNewsItem />
-          <SmallNewsItem />
+          {
+            posts.map((post) => <SmallNewsItem key={post.id} post={post} />)
+          }
         </SimpleGrid>
       </Container>
     </div>
   )
 }
 
-function SmallNewsItem() {
+function SmallNewsItem({post}: NewsItemProps) {
+  const authorName = `${post.author.firstName} ${post.author.lastName}`;
+  const publishedDate = post.published.toDateString();
+
   return (
     <Box display="flex" style={{alignItems: "center"}}>
-      <Box style={{height: "200px", width: "100%", background: "#212121"}} />
-      <Box mx="xl" style={{}}>
-        <Title order={3}>Using the private Kia API <span style={{color: "#797979"}}>Kia, when will you make our life easier?</span></Title>
-        <Text size="sm" my="sm" color="dimmed">by Joschua Haß - January 30, 2023</Text>
+      <Box style={{height: "200px", width: "600px", position: "relative", overflow: "hidden"}}>
+        <Image alt="news title image" src={post.imageUrl} fill={true} style={{objectFit: "cover", objectPosition: post.objectPosition}} />
+      </Box>
+      <Box px="xl" style={{width: "100%"}}>
+        <Title order={3}>
+          {post.title + ' '}
+          <span style={{color: "#797979"}}>{post.subtitle}</span></Title>
+        <Text size="sm" my="sm" color="dimmed">by {authorName} - {publishedDate}</Text>
       </Box>
     </Box>
   )
 }
 
-interface HeaderNewsItemProps {
+interface NewsItemProps {
   post: Post;
 }
-function HeaderNewsItem({post}: HeaderNewsItemProps) {
+function HeaderNewsItem({post}: NewsItemProps) {
   const authorName = `${post.author.firstName} ${post.author.lastName}`;
   const publishedDate = post.published.toDateString();
 
@@ -165,7 +170,7 @@ function HeaderNewsItem({post}: HeaderNewsItemProps) {
   )
 }
 
-function MediumNewsItem({post}: HeaderNewsItemProps) {
+function MediumNewsItem({post}: NewsItemProps) {
   const authorName = `${post.author.firstName} ${post.author.lastName}`;
   const publishedDate = post.published.toDateString();
 
