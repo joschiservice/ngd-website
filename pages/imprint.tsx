@@ -6,6 +6,8 @@ import { useSpring, animated, easings } from '@react-spring/web'
 import backgroundImage from '../public/img/charging-stations.jpg'
 import {BsFillLightningChargeFill} from "react-icons/bs"
 import Link from "next/link";
+import PublicLayout from "@/layouts/PublicLayout";
+import {Box} from "@mantine/core";
 
 const roboto = Open_Sans({
   weight: '700',
@@ -19,13 +21,13 @@ const robotoText = Open_Sans({
 
 export default function Imprint() {
   return (
-    <>
+    <PublicLayout>
       <Head>
         <title>Imprint | NextGen Drive</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <Box mx="xl" sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
         <div className={robotoText.className} style={{maxWidth: "800px"}}>
           <h1 style={{marginBottom: "8px"}}>Imprint/Legal Disclosure</h1>
           <p>
@@ -51,7 +53,7 @@ export default function Imprint() {
             may violate copyright laws.
           </p>
         </div>
-      </main>
-    </>
+      </Box>
+    </PublicLayout>
   )
 }

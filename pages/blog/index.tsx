@@ -21,28 +21,10 @@ import TeslaAutopilotImage from "../../public/img/tesla-model-s-autopilot-softwa
 import RivianR1TImage from "../../public/img/RivianR1T.jpeg";
 import FreewireImage from "../../public/img/FreewireChargingStation.jpeg"
 import Image from "next/image";
-
-interface Post {
-  id: number;
-
-  title: string;
-
-  subtitle: string;
-
-  published: Date,
-
-  readTime: number,
-
-  author: {
-    firstName: string;
-
-    lastName: string;
-  },
-
-  imageUrl: string;
-
-  objectPosition?: string;
-}
+import {Post} from "@/models/Post";
+import {NewsItem} from "@/components/NewsItems/NewsItem";
+import { SmallNewsItem } from "@/components/NewsItems/SmallNewsItem";
+import PublicLayout from "@/layouts/PublicLayout";
 
 const posts: Post[] = [
   {
@@ -99,23 +81,14 @@ const posts: Post[] = [
 
 export default function NewLandingPage() {
   return (
-    <div style={{background: "black"}}>
-      <div style={{width: "100vw", padding: 18, display: "flex", justifyContent: "space-between"}}>
-        <BsFillLightningChargeFill className={styles.neonLogo} style={{fontSize: 28}} />
-        <div>
-          <Link href={"/"} className={styles.navLink}>Home</Link>
-          <Link href={"/blog"} className={styles.navLink}>Blog</Link>
-          <Link href={"/imprint"} className={styles.navLink}>Imprint</Link>
-        </div>
-        <div />
-      </div>
+    <PublicLayout>
       <Container size={1300}>
-        <HeaderNewsItem post={posts[0]} />
+        <NewsItem post={posts[0]} />
         <Space h="xl" />
         <SimpleGrid cols={3}>
-          <MediumNewsItem post={posts[1]} />
-          <MediumNewsItem post={posts[2]} />
-          <MediumNewsItem post={posts[3]} />
+          <NewsItem post={posts[1]} />
+          <NewsItem post={posts[2]} />
+          <NewsItem post={posts[3]} />
         </SimpleGrid>
         <Space h={42} />
         <SimpleGrid cols={2}>
@@ -124,68 +97,6 @@ export default function NewLandingPage() {
           }
         </SimpleGrid>
       </Container>
-    </div>
-  )
-}
-
-function SmallNewsItem({post}: NewsItemProps) {
-  const authorName = `${post.author.firstName} ${post.author.lastName}`;
-  const publishedDate = post.published.toDateString();
-
-  return (
-    <Box display="flex" style={{alignItems: "center"}}>
-      <Box style={{height: "200px", width: "600px", position: "relative", overflow: "hidden"}}>
-        <Image alt="news title image" src={post.imageUrl} fill={true} style={{objectFit: "cover", objectPosition: post.objectPosition}} />
-      </Box>
-      <Box px="xl" style={{width: "100%"}}>
-        <Title order={3}>
-          {post.title + ' '}
-          <span style={{color: "#797979"}}>{post.subtitle}</span></Title>
-        <Text size="sm" my="sm" color="dimmed">by {authorName} - {publishedDate}</Text>
-      </Box>
-    </Box>
-  )
-}
-
-interface NewsItemProps {
-  post: Post;
-}
-function HeaderNewsItem({post}: NewsItemProps) {
-  const authorName = `${post.author.firstName} ${post.author.lastName}`;
-  const publishedDate = post.published.toDateString();
-
-  return (
-    <Box display="flex" sx={{height: "60vh", position: "relative"}}>
-      <Image alt="news title image" src={post.imageUrl} fill={true} style={{objectFit: "cover", objectPosition: "50% 50%"}} priority />
-      <Box p="xl" sx={{background: "rgba(0,0,0,0.5)", height: "100%", width: "100%", display: "flex", flexDirection: "column", justifyContent: "end", zIndex: 2}}>
-        <Box style={{maxWidth: "650px"}}>
-          <Title order={1} style={{textShadow: "1px 1px 4px black"}}>
-            {post.title + ' '}
-            <span style={{color: "#b2b2b2", fontWeight: 400}}>{post.subtitle}</span>
-          </Title>
-          <Text size="sm" my="lg" color="#b2b2b2">by {authorName} - {publishedDate} - {post.readTime} minute read</Text>
-        </Box>
-      </Box>
-    </Box>
-  )
-}
-
-function MediumNewsItem({post}: NewsItemProps) {
-  const authorName = `${post.author.firstName} ${post.author.lastName}`;
-  const publishedDate = post.published.toDateString();
-
-  return (
-    <Box display="flex" sx={{height: "60vh", position: "relative"}}>
-      <Image alt="news title image" src={post.imageUrl} fill={true} style={{objectFit: "cover", objectPosition: post.objectPosition}} priority />
-      <Box p="xl" style={{background: "rgba(0,0,0,0.4)", height: "100%", width: "100%", display: "flex", flexDirection: "column", justifyContent: "end", zIndex: 2}}>
-        <Box style={{maxWidth: "650px"}}>
-          <Title order={2} style={{textShadow: "1px 1px 4px black"}}>
-            {post.title + ' '}
-            <span style={{color: "#b2b2b2", fontWeight: 400}}>{post.subtitle}</span>
-          </Title>
-          <Text size="sm" my="lg" color="#b2b2b2">by {authorName} - {publishedDate} - {post.readTime} minute read</Text>
-        </Box>
-      </Box>
-    </Box>
+    </PublicLayout>
   )
 }
