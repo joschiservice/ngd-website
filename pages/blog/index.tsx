@@ -25,6 +25,7 @@ import {Post} from "@/models/Post";
 import {NewsItem} from "@/components/NewsItems/NewsItem";
 import { SmallNewsItem } from "@/components/NewsItems/SmallNewsItem";
 import PublicLayout from "@/layouts/PublicLayout";
+import {MediumNewsItem} from "@/components/NewsItems/MediumNewsItem";
 
 const posts: Post[] = [
   {
@@ -82,13 +83,13 @@ const posts: Post[] = [
 export default function NewLandingPage() {
   return (
     <PublicLayout>
-      <Container size={1300}>
+      <Container size="xl">
         <NewsItem post={posts[0]} />
         <Space h="xl" />
         <SimpleGrid cols={3}>
-          <NewsItem post={posts[1]} />
-          <NewsItem post={posts[2]} />
-          <NewsItem post={posts[3]} />
+          <MediumNewsItem post={posts[1]} />
+          <MediumNewsItem post={posts[2]} />
+          <MediumNewsItem post={posts[3]} />
         </SimpleGrid>
         <Space h={42} />
         <SimpleGrid cols={2}>
