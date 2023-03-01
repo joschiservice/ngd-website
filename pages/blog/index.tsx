@@ -82,7 +82,7 @@ const posts: Post[] = [
 
 export default function NewLandingPage() {
   return (
-    <PublicLayout>
+    <PublicLayout hoverNavbar={false}>
       <Container size="xl">
         <NewsItem post={posts[0]} />
         <Space h="xl" />

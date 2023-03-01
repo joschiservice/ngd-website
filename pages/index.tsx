@@ -75,7 +75,7 @@ export default function NewLandingPage() {
             </Stack>
           </div>
         </animated.div>
-        <Container size="lg">
+        <Container size="xl">
           <Grid grow gutter={40} align="center">
             <Grid.Col span={1}>
               <Title size={34} color="white">{"There's much more to it than just driving from A to B"}</Title>

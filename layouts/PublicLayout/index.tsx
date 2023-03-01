@@ -5,17 +5,18 @@ import {Box, Container, Divider, Flex, SimpleGrid, Space, Text, Title} from "@ma
 import {FaGithub, FaInstagram, FaTwitter} from "react-icons/fa";
 
 interface Props {
-  children: any
+  children: any,
+  hoverNavbar?: boolean,
 }
 
-export default function PublicLayout({children}: Props) {
+export default function PublicLayout({children, hoverNavbar = true}: Props) {
   return (
     <div style={{background: "black"}}>
-      <div style={{width: "100vw", padding: 18, display: "flex", justifyContent: "space-between"}}>
+      <div style={{width: "100vw", padding: 18, display: "flex", justifyContent: "space-between", position: hoverNavbar ? "absolute" : "relative", zIndex: 2}}>
         <BsFillLightningChargeFill className={styles.neonLogo} style={{fontSize: 28}} />
         <div>
           <Link href={"/"} className={styles.navLink}>Home</Link>
-          <Link href={"/"} className={styles.navLink}>Products</Link>
+          <Link href={"/products"} className={styles.navLink}>Products</Link>
           <Link href={"/blog"} className={styles.navLink}>Blog</Link>
           <Link href={"/imprint"} className={styles.navLink}>Imprint</Link>
         </div>
