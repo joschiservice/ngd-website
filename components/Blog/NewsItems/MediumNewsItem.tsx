@@ -3,7 +3,7 @@ import Image from "next/image";
 import {Post} from "@/models/Post";
 import Link from "next/link";
 import dayjs from "dayjs";
-import {NewsItemProps} from "@/components/NewsItems/NewsItem";
+import {NewsItemProps} from "@/components/Blog/NewsItems/NewsItem";
 
 export function MediumNewsItem({post}: NewsItemProps) {
   const authorName = `${post.author.firstName} ${post.author.lastName}`;

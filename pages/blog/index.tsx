@@ -22,10 +22,10 @@ import RivianR1TImage from "../../public/img/RivianR1T.jpeg";
 import FreewireImage from "../../public/img/FreewireChargingStation.jpeg"
 import Image from "next/image";
 import {Post} from "@/models/Post";
-import {NewsItem} from "@/components/NewsItems/NewsItem";
-import { SmallNewsItem } from "@/components/NewsItems/SmallNewsItem";
+import {NewsItem} from "@/components/Blog/NewsItems/NewsItem";
+import { SmallNewsItem } from "@/components/Blog/NewsItems/SmallNewsItem";
 import PublicLayout from "@/layouts/PublicLayout";
-import {MediumNewsItem} from "@/components/NewsItems/MediumNewsItem";
+import {MediumNewsItem} from "@/components/Blog/NewsItems/MediumNewsItem";
 
 const posts: Post[] = [
   {
@@ -82,7 +82,7 @@ const posts: Post[] = [
 
 export default function NewLandingPage() {
   return (
-    <PublicLayout hoverNavbar={false}>
+    <PublicLayout title="Blog" hoverNavbar={false}>
       <Container size="xl">
         <NewsItem post={posts[0]} />
         <Space h="xl" />

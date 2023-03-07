@@ -14,105 +14,37 @@ import {
   List,
   Stack,
   Text,
-  Title, ThemeIcon
+  Title, ThemeIcon, MediaQuery
 } from "@mantine/core";
-import {NewsItem} from "@/components/NewsItems/NewsItem";
-import { SmallNewsItem } from "@/components/NewsItems/SmallNewsItem";
+import {NewsItem} from "@/components/Blog/NewsItems/NewsItem";
+import { SmallNewsItem } from "@/components/Blog/NewsItems/SmallNewsItem";
 import PublicLayout from "@/layouts/PublicLayout";
-import {MediumNewsItem} from "@/components/NewsItems/MediumNewsItem";
+import {MediumNewsItem} from "@/components/Blog/NewsItems/MediumNewsItem";
 import {animated, easings, useInView, useSpring, useTrail} from "@react-spring/web";
 import React from "react";
-import {AnimatedList} from "@/components/List";
+import {AnimatedList} from "@/components/shared/List";
 import {MdDesignServices, MdRecordVoiceOver, MdHvac, MdOutlineBatteryChargingFull, MdAutoGraph} from "react-icons/md";
 import Image from "next/image";
 import BetterKiaPreviewImg from "../../public/img/better-kia-preview.png";
 import BetterKiaSiriPreviewImg from "../../public/img/better-kia-siri-preview.png";
 import BetterKiaLiveActivityPreviewImg from "../../public/img/better-kia-live-activity-preview.png";
 import {IoChevronDown} from "react-icons/io5";
+import {useMediaQuery} from "@mantine/hooks";
+import {ProductBanner} from "@/components/Products/ProductBanner";
+import {FeatureCard} from "@/components/Products/FeatureCard";
 
 export default function NewLandingPage() {
-  const [titleAnimationRef, titleAnimation] = useInView(
-    () => ({
-      from: {
-        opacity: 0,
-        y: 100,
-      },
-      to: {
-        opacity: 1,
-        y: 0,
-      },
-      config: {
-        easing: easings.easeOutExpo,
-        duration: 1500
-      }
-    }),
-    {
-      rootMargin: '0% 0%',
-      once: true
-    }
-  )
-
-  const descriptionAnim = useSpring(
-      {
-        from: {
-          opacity: 0,
-        },
-        to: {
-          opacity: 1,
-        },
-        config: {
-          easing: easings.easeOutExpo,
-          duration: 1500,
-        },
-        delay: 300
-      })
-
-  const releaseInfoAnim = useSpring(
-    {
-      from: {
-        opacity: 0,
-      },
-      to: {
-        opacity: 1,
-      },
-      config: {
-        easing: easings.easeOutExpo,
-        duration: 1500,
-      },
-      delay: 500
-    })
-
-  const [proLabelAnimationRef, proLabelAnimation] = useInView(
-    () => ({
-      delay: 1500,
-      from: {
-        color: "#fff"
-      },
-      to: {
-        color: "#1182ff"
-      },
-      config: {
-        easing: easings.easeOutExpo,
-        duration: 1500,
-      }
-    }),
-    {
-      rootMargin: '0% 0%',
-      once: true
-    }
-  )
-
   const chevronDownAnim = useSpring(
     {
       from: {
-        bottom: "4%"
+        bottom: "0%"
       },
       to: [
         {
-          bottom: "8%"
+          bottom: "2%"
         },
         {
-          bottom: "4%"
+          bottom: "0%"
         }
       ],
       config: {
@@ -125,57 +57,30 @@ export default function NewLandingPage() {
 
   const FEATURE_ICON_SIZE = 26
 
+  const hoverNavbar = !useMediaQuery('(max-width: 440px)');
+
+  const isSmallDevice = useMediaQuery('(max-width: 1020px)');
+
   return (
-    <PublicLayout hoverNavbar={true}>
-      <Container size="lg" sx={{minHeight: "100vh"}}>
-        <Flex justify="space-between" align="center" sx={{minHeight: "100vh"}}>
-          <Box sx={{maxWidth: "610px"}}>
-            <animated.div ref={titleAnimationRef} style={titleAnimation}>
-              <Title lh={1.2} style={{fontSize: 64}}>The <animated.span ref={proLabelAnimationRef} style={proLabelAnimation}>Pro</animated.span>-Upgrade for your Kia & Hyundai</Title>
-            </animated.div>
-            <animated.div style={descriptionAnim}>
-              <Text my="xl" size="lg">
-                Bring your Kia & Hyundai experience to the next level and unlock brand-new features you will love. Unlock your car using your favorite voice assistant, create more than two HVAC schedules or preventing your eyes from getting burnt by enabling the dark mode.
-              </Text>
-            </animated.div>
-            <animated.div style={releaseInfoAnim}>
-              <Text color="dimmed">Coming 2023 to iOS devices</Text>
-            </animated.div>
-          </Box>
-          <Box style={{height: "70vh", width: "30%", position: "relative", overflow: "hidden"}}>
-            <Image alt="BetterKia app preview" src={BetterKiaPreviewImg} fill={true} style={{objectFit: "contain"}} />
-          </Box>
-        </Flex>
-      </Container>
+    <PublicLayout title="BetterKia" hoverNavbar={true}>
+      <ProductBanner />
       <animated.div style={{position: "absolute", left: "50%", ...chevronDownAnim}}>
         <IoChevronDown size={32} />
       </animated.div>
       <Container size="xl">
-        <SimpleGrid cols={2}>
-          <Box p="xl" pb={0} sx={{width: "100%", background: "#2F58CD", borderRadius: "16px"}}>
-            <Title order={2}>Siri Integration</Title>
-            <Text style={{color: "#bebebe"}}>Easily check the status or control your car</Text>
-            <Flex justify="center" sx={{width: "100%"}}>
-              <Box style={{height: "350px", width: "70%", position: "relative", overflow: "hidden"}}>
-                <Image alt="BetterKia app preview" src={BetterKiaSiriPreviewImg} fill={true} style={{objectFit: "cover", objectPosition: "50% 0%"}} />
-              </Box>
-            </Flex>
-          </Box>
-          <Flex p="xl" sx={{width: "100%", background: "#21262d", borderRadius: "16px"}} direction="column"
-                justify="space-between">
-            <Box>
-              <Title order={2}>Always Up-To-Date</Title>
-              <Text style={{color: "#bebebe"}}>View charging information at a glance</Text>
-            </Box>
-            <Flex justify="center" align="end" sx={{width: "100%"}}>
-              <Box style={{height: "300px", width: "70%", position: "relative", overflow: "hidden"}}>
-                <Image alt="BetterKia app preview" src={BetterKiaLiveActivityPreviewImg} fill={true} style={{objectFit: "cover", objectPosition: "50% 94%"}} />
-              </Box>
-            </Flex>
-          </Flex>
+        <SimpleGrid cols={isSmallDevice ? 1 : 2}>
+          <FeatureCard title="Siri Integration" description="Easily check the status or control your car"
+                       imgSrc={BetterKiaSiriPreviewImg} imgAlt="BetterKia Siri demonstration"
+                       imgPosition="50% 0%" color="#2F58CD" pb={false}
+                       imgHeightDesktop={350} imgHeightMobile={250} />
+
+          <FeatureCard title="Always Up-To-Date" description="View charging information at a glance"
+                       imgSrc={BetterKiaLiveActivityPreviewImg} imgAlt="BetterKia charging live activity demonstration"
+                       imgPosition="50% 94%" color="#21262d"
+                       imgHeightDesktop={300} imgHeightMobile={200} />
         </SimpleGrid>
 
-        <Text color="dimmed" size="sm" align="center" mt={120}>
+        <Text color="dimmed" size={isSmallDevice ? "xs" : "sm"} align="center" mt={isSmallDevice ? 60 : 120}>
           All images were created in an early development build. These features are subject to change in terms of functionality and design. All rights reserved. <br/>
           Kia® and the Kia® logo are registered trademarks by the Kia Corporation. <br/>
           Hyundai® and the Hyundai® logo are registered trademarks by the Hyundai Motor Company.

@@ -29,3 +29,8 @@ a {
 }
 /* Fix for Safari bug */
 @supports (font: -apple-system-body) and (-webkit-appearance: none) { img[loading="lazy"] { clip-path: inset(0.6px) } }
+
+.min-height-full {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}

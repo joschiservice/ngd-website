@@ -1,6 +1,6 @@
 import {Box, Text, Title} from "@mantine/core";
 import Image from "next/image";
-import {NewsItemProps} from "@/components/NewsItems/NewsItem";
+import {NewsItemProps} from "@/components/Blog/NewsItems/NewsItem";
 
 export function SmallNewsItem({post}: NewsItemProps) {
   const authorName = `${post.author.firstName} ${post.author.lastName}`;

@@ -61,7 +61,7 @@ export default function NewLandingPage() {
   )
 
   return (
-    <PublicLayout>
+    <PublicLayout title="Home">
       <div style={{background: "black"}}>
         <animated.div className={styles.main}>
           <animated.div style={{position: "relative", width: "60vw", height: "80vh", marginLeft: "auto", marginRight: 0, top: "50%", ...fadeIn}}>

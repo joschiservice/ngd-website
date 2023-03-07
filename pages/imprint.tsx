@@ -1,13 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Open_Sans } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
-import { useSpring, animated, easings } from '@react-spring/web'
-import backgroundImage from '../public/img/charging-stations.jpg'
-import {BsFillLightningChargeFill} from "react-icons/bs"
-import Link from "next/link";
 import PublicLayout from "@/layouts/PublicLayout";
-import {Box} from "@mantine/core";
+import {Box, Title} from "@mantine/core";
 
 const roboto = Open_Sans({
   weight: '700',
@@ -21,15 +15,14 @@ const robotoText = Open_Sans({
 
 export default function Imprint() {
   return (
-    <PublicLayout>
+    <PublicLayout title="Imprint" hoverNavbar={false}>
       <Head>
-        <title>Imprint | NextGen Drive</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box mx="xl" sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
         <div className={robotoText.className} style={{maxWidth: "800px"}}>
-          <h1 style={{marginBottom: "8px"}}>Imprint/Legal Disclosure</h1>
+          <Title order={1} style={{marginBottom: "8px"}}>Imprint/Legal Disclosure</Title>
           <p>
             Information in accordance with Section 5 TMG.<br/>
             <br/>
@@ -38,12 +31,12 @@ export default function Imprint() {
             To Westen 5<br/>
             25770 Hemmingstedt, Germany<br/>
           </p>
-          <h2 style={{marginBottom: "6px", marginTop: "16px"}}>Contact Information</h2>
+          <Title order={2} style={{marginBottom: "6px", marginTop: "16px"}}>Contact Information</Title>
           <p>
             Telephone: +49 151 22562454<br/>
             E-Mail: joschua.hass.sh@gmail.com<br/>
           </p>
-          <h2 style={{marginBottom: "6px", marginTop: "16px"}}>Copyright</h2>
+          <Title order={2} style={{marginBottom: "6px", marginTop: "16px"}}>Copyright</Title>
           <p>
             Our web pages and their contents are subject to German copyright law.
             Unless expressly permitted by law, every form of utilizing,

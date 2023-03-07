@@ -30,7 +30,11 @@ if (password === "" || password.trim() === "") {
 
 const prisma = new PrismaClient()
 
-// ToDo: Return if a root user already exist
+// Return if a root user already exists
+let rootUserExists = await prisma.user.count({ where: { email: email } });
+if (rootUserExists > 0) {
+    throw new Error("ERROR: A root user with the email " + email + " already exists. Please run the command again with a different email address.");
+}
 
 console.time('PasswordHashCalculationTime')
 
