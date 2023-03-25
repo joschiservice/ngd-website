@@ -1,11 +1,14 @@
 import {BsFillLightningChargeFill} from "react-icons/bs";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
-import {Box, Container, Divider, Flex, SimpleGrid, Space, Text, Title} from "@mantine/core";
+import {Box, Container, Divider, Flex, SimpleGrid, Space, Stack, Text, Title} from "@mantine/core";
 import {FaGithub, FaInstagram, FaTwitter} from "react-icons/fa";
+import {RxHamburgerMenu} from "react-icons/rx";
+import {MdClose} from "react-icons/md";
 import {useRouter} from "next/router";
 import {useMediaQuery} from "@mantine/hooks";
 import Head from "next/head";
+import {useState} from "react";
 
 interface Props {
   children: any,
@@ -37,6 +40,40 @@ const NAV_ITEMS = [
   }
 ]
 
+function HamburgerMenu() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const router = useRouter();
+
+  function toogleMenu() {
+    setIsOpen(!isOpen);
+  }
+
+  return (
+    <>
+      <RxHamburgerMenu style={{fontSize: 28, color: "white"}} onClick={toogleMenu} />
+      {
+        isOpen ?
+          <Box p="xl" style={{minHeight: "100vh", minWidth: "100vw", zIndex: 40, position: "fixed", top: 0, left: 0, backgroundColor: "rgba(0,0,0,1)"}}>
+            <Flex justify="end" style={{minWidth: "100%"}}>
+              <MdClose style={{fontSize: 28, color: "white"}} onClick={toogleMenu} />
+            </Flex>
+            <Stack spacing="xl" mt="xl">
+              {
+                NAV_ITEMS.map(navItem =>
+                  <Link key={navItem.id} href={navItem.href} className={styles.navLink}
+                        style={navItem.href == router.pathname ? { opacity: 1 } : {}}>
+                    {navItem.title}
+                  </Link>
+                )
+              }
+            </Stack>
+          </Box> : null
+      }
+    </>
+  )
+}
+
 export default function PublicLayout({children, title, hoverNavbar = true}: Props) {
   const router = useRouter();
 
@@ -49,10 +86,11 @@ export default function PublicLayout({children, title, hoverNavbar = true}: Prop
         <meta name="theme-color" content="#000000" />
       </Head>
       <div style={{background: "black"}}>
-        <div style={{width: "100vw", padding: 18, display: "flex", justifyContent: "space-between", position: hoverNavbar ? "absolute" : "relative", zIndex: 2}}>
+        <div style={{width: "100vw", padding: 18, display: "flex", justifyContent:  "space-between", position: hoverNavbar ? "absolute" : "relative", zIndex: 2}}>
           <BsFillLightningChargeFill className={styles.neonLogo} style={{fontSize: 28}} />
           <div>
             {
+              isSmallDevice ? <HamburgerMenu/> :
               NAV_ITEMS.map(navItem =>
                 <Link key={navItem.id} href={navItem.href} className={styles.navLink}
                       style={navItem.href == router.pathname ? { opacity: 1 } : {}}>
@@ -61,7 +99,7 @@ export default function PublicLayout({children, title, hoverNavbar = true}: Prop
               )
             }
           </div>
-          <div />
+          { isSmallDevice ? null : <div />}
         </div>
         {children}
         <Container size="xl">
@@ -76,18 +114,28 @@ export default function PublicLayout({children, title, hoverNavbar = true}: Prop
             </Text>
           </Box>
           <Flex mt={28} gap={28}>
-            <Text color="white">Products</Text>
-            <Text color="white">Blog</Text>
-            <Text color="white">Privacy</Text>
-            <Text color="white">Imprint</Text>
+            <Link href="/products">
+              <Text color="white">Products</Text>
+            </Link>
+            <Link href="/blog">
+              <Text color="white">Blog</Text>
+            </Link>
+            <Link href="/privacy">
+              <Text color="white">Privacy</Text>
+            </Link>
+            <Link href="/imprint">
+              <Text color="white">Imprint</Text>
+            </Link>
           </Flex>
           <Divider mt={28} />
           <Flex py={32} style={{justifyContent: "space-between"}}>
             <Text>© 2023 NextGen Drive</Text>
             <Flex gap="md">
-              <FaTwitter size={FOOTER_ICON_SIZE} />
-              <FaInstagram size={FOOTER_ICON_SIZE} />
-              <FaGithub size={FOOTER_ICON_SIZE} />
+              { /* <FaTwitter size={FOOTER_ICON_SIZE} /> */ }
+              <Link href="https://instagram.com/ngdrive">
+                <FaInstagram size={FOOTER_ICON_SIZE} />
+              </Link>
+              { /*<FaGithub size={FOOTER_ICON_SIZE} />*/ }
             </Flex>
           </Flex>
         </Container>

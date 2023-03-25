@@ -97,7 +97,7 @@ export function ProductBanner() {
       {/* Mobile Variant */}
       <MediaQuery largerThan="md" styles={{display: "none"}}>
         <Box>
-          <Box pt={80} sx={{maxWidth: "610px"}} className="min-height-full">
+          <Box pt={80} sx={{maxWidth: "610px", minHeight: "100vh"}} className="min-height-full">
             <Box>
               <animated.div style={titleAnimation}>
                 <Title align="center" lh={1.2} pb="md" style={{fontSize: 32}} color="white">

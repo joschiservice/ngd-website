@@ -25,11 +25,13 @@ import {
   Title
 } from "@mantine/core";
 import {useEffect, useRef, useState} from "react";
-import {useTimeout} from "@mantine/hooks";
+import {useMediaQuery, useTimeout} from "@mantine/hooks";
 import {MdOutlineSmartDisplay} from "react-icons/md"
 import PublicLayout from "@/layouts/PublicLayout";
 
 export default function NewLandingPage() {
+  const isSmallDevice = useMediaQuery('(max-width: 1020px)');
+
   const fadeIn = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -63,32 +65,47 @@ export default function NewLandingPage() {
   return (
     <PublicLayout title="Home">
       <div style={{background: "black"}}>
-        <animated.div className={styles.main}>
-          <animated.div style={{position: "relative", width: "60vw", height: "80vh", marginLeft: "auto", marginRight: 0, top: "50%", ...fadeIn}}>
-            <HeroImages />
-          </animated.div>
-          <div style={{position: "absolute", display: "flex", alignItems: "center", minWidth: "100vw", minHeight: "100%", background: "linear-gradient(90deg, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)"}}>
-            <Stack mr={"6rem"} style={{maxWidth: "650px"}} spacing={0}>
-              <Text color="#339557" fw={600}>Unlock the full potential of your BEV/FCEV</Text>
-              <Text fw={500} fz="42px" color="white" mt="sm" style={{lineHeight: "50px"}}>Let&apos;s Elevate Your Driving Experience</Text>
-              <Text mt="sm">Transform your electric vehicle into a cutting-edge driving machine with our range of premium software & hardware upgrade products.</Text>
-            </Stack>
-          </div>
-        </animated.div>
+        {
+          isSmallDevice ? (
+              <animated.div className={styles.main}>
+                <animated.div style={{position: "relative", width: "100vw", height: "80vh", top: "50%", ...fadeIn}}>
+                  <HeroImages />
+                </animated.div>
+                <div style={{position: "absolute", zIndex: 1, display: "flex", alignItems: "center", minWidth: "100vw", minHeight: "100%", background: "rgba(0,0,0,0.7)"}}>
+                  <Stack style={{maxWidth: "650px"}} spacing={0} mx="xl">
+                    <Text color="#339557" fw={600}>Unlock the full potential of your BEV/FCEV</Text>
+                    <Text fw={500} fz="42px" color="white" mt="sm" style={{lineHeight: "50px"}}>Let&apos;s Elevate Your Driving Experience</Text>
+                    <Text mt="sm">We are developing a wide range of premium software & hardware upgrade products to transform your electric vehicle into a cutting-edge driving machine.</Text>
+                  </Stack>
+                </div>
+              </animated.div>
+            )
+            :
+            (
+              <animated.div className={styles.main}>
+                <animated.div style={{position: "relative", width: "60vw", height: "80vh", marginLeft: "auto", marginRight: 0, top: "50%", ...fadeIn}}>
+                  <HeroImages />
+                </animated.div>
+                <div style={{position: "absolute", display: "flex", alignItems: "center", minWidth: "100vw", minHeight: "100%", background: "linear-gradient(90deg, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)"}}>
+                  <Stack mr={"6rem"} style={{maxWidth: "650px"}} spacing={0}>
+                    <Text color="#339557" fw={600}>Unlock the full potential of your BEV/FCEV</Text>
+                    <Text fw={500} fz="42px" color="white" mt="sm" style={{lineHeight: "50px"}}>Let&apos;s Elevate Your Driving Experience</Text>
+                    <Text mt="sm">We are developing a wide range of premium software & hardware upgrade products to transform your electric vehicle into a cutting-edge driving machine.</Text>
+                  </Stack>
+                </div>
+              </animated.div>
+            )
+        }
         <Container size="xl">
-          <Grid grow gutter={40} align="center">
-            <Grid.Col span={1}>
-              <Title size={34} color="white">{"There's much more to it than just driving from A to B"}</Title>
-            </Grid.Col>
-            <Grid.Col span={1}>
-              <Text size="sm">
-                Transform your car into a world of endless entertainment and innovation. With cutting-edge technology and seamless integration, every journey becomes an experience to remember. Say goodbye to mundane drives and hello to a new era of excitement and convenience.
-              </Text>
-            </Grid.Col>
-          </Grid>
+          <SimpleGrid cols={isSmallDevice ? 1 : 2} spacing={isSmallDevice ? 10 : 40}>
+            <Title size={isSmallDevice ? 28 : 34} color="white">{"There's much more to it than just driving from A to B"}</Title>
+            <Text size="sm">
+              Transform your car into a world of endless entertainment and innovation. With cutting-edge technology and seamless integration, every journey becomes an experience to remember. Say goodbye to mundane drives and hello to a new era of excitement and convenience.
+            </Text>
+          </SimpleGrid>
           <Space h={80} />
           <animated.div ref={featureItemsRef} style={featureItemsAnimation}>
-            <SimpleGrid cols={3} mt="xl">
+            <SimpleGrid cols={isSmallDevice ? 1 : 3} mt="xl">
               <FeatureCard title="Interior Upgrades"
                            description="Unleash the full potential of your car with advanced tech! Transform your rides into tech-savvy masterpieces with seamless infotainment, ambient lighting, and cutting-edge upgrades. Experience the next level of driving excellence and elevate your journeys to new heights!"
                            href="/"
@@ -122,14 +139,16 @@ export default function NewLandingPage() {
         <div style={{background: "linear-gradient(90deg, rgba(10,31,89,1) 0%, rgba(21,182,166,1) 100%)"}}>
           <Container size="xl" py={60}>
             <Flex align="center" direction="column">
-              <Title color="white" order={1}>Say Up-To-Date On Our Blog</Title>
+              <Title color="white" order={isSmallDevice ? 2 : 1}>Say Up-To-Date On Our Blog</Title>
               <Text color="white" align="center" mt="md" maw={550}>
                 On our blog, we are regularly releasing development updates about our products, news about new developments
                 in the rapidly changing electric vehicle industry and other milestones.
               </Text>
-              <Button mt="xl" size="md" color="green">
-                Visit Our Blog
-              </Button>
+              <Link href="/blog">
+                <Button mt="xl" size="md" color="green">
+                  Visit Our Blog
+                </Button>
+              </Link>
             </Flex>
           </Container>
         </div>
@@ -182,7 +201,7 @@ function HeroImages() {
 
   return (
     <>
-      <div style={{position: "relative", height: "100%", background: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0) 65%, rgba(0,0,0,1) 100%)", zIndex: 20}} />
+      <div style={{position: "relative", height: "100%", background: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0) 65%, rgba(0,0,0,1) 100%)", zIndex: 1}} />
       {
         images.map(image => {
           return <Image key={image.id} src={image.src} alt={image.alt} fill={true} style={{objectFit: "cover", objectPosition: image.objectPosition, opacity: image.id == activeImageId ? 1 : 0, transition: "opacity 2s ease-in-out"}}
