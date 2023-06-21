@@ -18,6 +18,7 @@ import {
 import PublicLayout from "@/layouts/PublicLayout";
 import Image from "next/image";
 import KiaEv6DriftImage from "../../../public/img/2023-ev6-gt-action-1660755931.jpg";
+import {IS_BLOG_ENABLED} from "@/config";
 
 export default function NewLandingPage() {
   return (
@@ -61,4 +62,11 @@ export default function NewLandingPage() {
       </Container>
     </PublicLayout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    notFound: !IS_BLOG_ENABLED,
+    props: {}
+  }
 }

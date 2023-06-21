@@ -28,6 +28,7 @@ import {useEffect, useRef, useState} from "react";
 import {useMediaQuery, useTimeout} from "@mantine/hooks";
 import {MdOutlineSmartDisplay} from "react-icons/md"
 import PublicLayout from "@/layouts/PublicLayout";
+import {IS_BLOG_ENABLED} from "@/config";
 
 export default function NewLandingPage() {
   const isSmallDevice = useMediaQuery('(max-width: 1020px)');
@@ -135,25 +136,40 @@ export default function NewLandingPage() {
             </Accordion.Item>
           </Accordion>
         </Container>
-        <Space h={80} />
-        <div style={{background: "linear-gradient(90deg, rgba(10,31,89,1) 0%, rgba(21,182,166,1) 100%)"}}>
-          <Container size="xl" py={60}>
-            <Flex align="center" direction="column">
-              <Title color="white" order={isSmallDevice ? 2 : 1}>Say Up-To-Date On Our Blog</Title>
-              <Text color="white" align="center" mt="md" maw={550}>
-                On our blog, we are regularly releasing development updates about our products, news about new developments
-                in the rapidly changing electric vehicle industry and other milestones.
-              </Text>
-              <Link href="/blog">
-                <Button mt="xl" size="md" color="green">
-                  Visit Our Blog
-                </Button>
-              </Link>
-            </Flex>
-          </Container>
-        </div>
+        {
+          IS_BLOG_ENABLED ?
+            (
+              <>
+                <Space h={80}/>
+                <BlogBanner/>
+              </>
+            ): null
+        }
       </div>
     </PublicLayout>
+  )
+}
+
+function BlogBanner() {
+  const isSmallDevice = useMediaQuery('(max-width: 1020px)');
+
+  return (
+    <div style={{background: "linear-gradient(90deg, rgba(10,31,89,1) 0%, rgba(21,182,166,1) 100%)"}}>
+      <Container size="xl" py={60}>
+        <Flex align="center" direction="column">
+          <Title color="white" order={isSmallDevice ? 2 : 1}>Stay Up-To-Date On Our Blog</Title>
+          <Text color="white" align="center" mt="md" maw={550}>
+            On our blog, we are regularly releasing development updates about our products, news about new developments
+            in the rapidly changing electric vehicle industry and other milestones.
+          </Text>
+          <Link href="/blog">
+            <Button mt="xl" size="md" color="green">
+              Visit Our Blog
+            </Button>
+          </Link>
+        </Flex>
+      </Container>
+    </div>
   )
 }
 

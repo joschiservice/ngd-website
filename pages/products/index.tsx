@@ -62,7 +62,7 @@ export default function NewLandingPage() {
   const isSmallDevice = useMediaQuery('(max-width: 1020px)');
 
   return (
-    <PublicLayout title="BetterKia" hoverNavbar={true}>
+    <PublicLayout title="Sparky" hoverNavbar={true}>
       <ProductBanner />
       <animated.div style={{position: "absolute", left: "50%", ...chevronDownAnim}}>
         <IoChevronDown size={32} />

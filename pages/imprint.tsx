@@ -33,8 +33,8 @@ export default function Imprint() {
           </p>
           <Title order={2} style={{marginBottom: "6px", marginTop: "16px"}}>Contact Information</Title>
           <p>
-            Telephone: +49 151 22562454<br/>
-            E-Mail: joschua.hass.sh@gmail.com<br/>
+            Phone: +49 151 22562454<br/>
+            E-Mail: <a href="mailto:contact@nextgendrive.net">contact@nextgendrive.net</a><br/>
           </p>
           <Title order={2} style={{marginBottom: "6px", marginTop: "16px"}}>Copyright</Title>
           <p>

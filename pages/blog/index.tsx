@@ -26,6 +26,8 @@ import {NewsItem} from "@/components/Blog/NewsItems/NewsItem";
 import { SmallNewsItem } from "@/components/Blog/NewsItems/SmallNewsItem";
 import PublicLayout from "@/layouts/PublicLayout";
 import {MediumNewsItem} from "@/components/Blog/NewsItems/MediumNewsItem";
+import {IS_BLOG_ENABLED} from "@/config";
+import {PageNotFoundError} from "next/dist/shared/lib/utils";
 
 const posts: Post[] = [
   {
@@ -100,4 +102,11 @@ export default function NewLandingPage() {
       </Container>
     </PublicLayout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    notFound: !IS_BLOG_ENABLED,
+    props: {}
+  }
 }

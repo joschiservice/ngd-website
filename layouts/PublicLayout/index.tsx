@@ -8,7 +8,8 @@ import {MdClose} from "react-icons/md";
 import {useRouter} from "next/router";
 import {useMediaQuery} from "@mantine/hooks";
 import Head from "next/head";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {IS_BLOG_ENABLED} from "@/config";
 
 interface Props {
   children: any,
@@ -40,7 +41,7 @@ const NAV_ITEMS = [
   }
 ]
 
-function HamburgerMenu() {
+function HamburgerMenu({items}: { items: { id: string, title: string, href: string }[]}) {
   const [isOpen, setIsOpen] = useState(false)
 
   const router = useRouter();
@@ -60,7 +61,7 @@ function HamburgerMenu() {
             </Flex>
             <Stack spacing="xl" mt="xl">
               {
-                NAV_ITEMS.map(navItem =>
+                items.map(navItem =>
                   <Link key={navItem.id} href={navItem.href} className={styles.navLink}
                         style={navItem.href == router.pathname ? { opacity: 1 } : {}}>
                     {navItem.title}
@@ -79,6 +80,13 @@ export default function PublicLayout({children, title, hoverNavbar = true}: Prop
 
   const isSmallDevice = useMediaQuery('(max-width: 1020px)');
 
+  let navItems = NAV_ITEMS;
+
+  if (!IS_BLOG_ENABLED) {
+    const indexToRemove = NAV_ITEMS.findIndex(item => item.id === "blog");
+    navItems = indexToRemove >= 0 ? NAV_ITEMS.filter(item => item.id !== "blog") : NAV_ITEMS;
+  }
+
   return (
     <>
       <Head>
@@ -90,8 +98,8 @@ export default function PublicLayout({children, title, hoverNavbar = true}: Prop
           <BsFillLightningChargeFill className={styles.neonLogo} style={{fontSize: 28}} />
           <div>
             {
-              isSmallDevice ? <HamburgerMenu/> :
-              NAV_ITEMS.map(navItem =>
+              isSmallDevice ? <HamburgerMenu items={navItems}/> :
+                navItems.map(navItem =>
                 <Link key={navItem.id} href={navItem.href} className={styles.navLink}
                       style={navItem.href == router.pathname ? { opacity: 1 } : {}}>
                   {navItem.title}

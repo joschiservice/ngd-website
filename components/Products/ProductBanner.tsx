@@ -73,10 +73,10 @@ export function ProductBanner() {
       {/* Desktop Variant */}
       <MediaQuery smallerThan="md" styles={{display: "none"}}>
         <Flex justify="space-between" align="center" sx={{minHeight: "100vh"}}>
-          <Box sx={{maxWidth: "610px"}}>
+          <Box sx={{maxWidth: "660px"}}>
             <animated.div style={titleAnimation}>
               <Title lh={1.2} style={{fontSize: 64}} color="white">
-                The <animated.span style={proLabelAnimation}>Pro</animated.span>-Upgrade for your Kia & Hyundai
+                The <animated.span style={proLabelAnimation}>Pro</animated.span>-Upgrade for your Kia & Hyundai EV
               </Title>
             </animated.div>
             <animated.div style={descriptionAnim}>
@@ -101,7 +101,7 @@ export function ProductBanner() {
             <Box>
               <animated.div style={titleAnimation}>
                 <Title align="center" lh={1.2} pb="md" style={{fontSize: 32}} color="white">
-                  The <animated.span style={proLabelAnimation}>Pro</animated.span>-Upgrade for your Kia & Hyundai
+                  The <animated.span style={proLabelAnimation}>Pro</animated.span>-Upgrade for your Kia & Hyundai EV
                 </Title>
               </animated.div>
               <Box style={{height: "58vh", width: "100%", position: "relative", overflow: "hidden"}}>
