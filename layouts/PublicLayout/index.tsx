@@ -90,7 +90,7 @@ export default function PublicLayout({children, title, hoverNavbar = true}: Prop
   return (
     <>
       <Head>
-        <title>{title} | NextGen Drive</title>
+        <title>{title + " | NextGen Drive"}</title>
         <meta name="theme-color" content="#000000" />
       </Head>
       <div style={{background: "black"}}>
