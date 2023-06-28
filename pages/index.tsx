@@ -6,7 +6,7 @@ import polestarImage from "@/public/img/polestar-night.jpg";
 import {animated, easings, useInView, useSpring} from "@react-spring/web";
 import {BsFillLightningChargeFill, BsPlayBtn, BsLightbulb} from "react-icons/bs";
 import {FiArrowUpRight} from "react-icons/fi";
-import {TbChargingPile} from "react-icons/tb";
+import {IoIosCellular} from "react-icons/io";
 import {MdOutlineElectricCar} from "react-icons/md"
 import {GiCarSeat} from "react-icons/gi"
 import Link from "next/link";
@@ -109,15 +109,12 @@ export default function NewLandingPage() {
             <SimpleGrid cols={isSmallDevice ? 1 : 3} mt="xl">
               <FeatureCard title="Interior Upgrades"
                            description="Unleash the full potential of your car with advanced tech! Transform your rides into tech-savvy masterpieces with seamless infotainment, ambient lighting, and cutting-edge upgrades. Experience the next level of driving excellence and elevate your journeys to new heights!"
-                           href="/"
                            icon={<GiCarSeat color="#339557" size={40} />} />
-              <FeatureCard title="Charging Infrastructure"
-                           description="Revolutionize your charging experience with our independent platform! Find the best nearby charging stations, rate them, and power up with ease. Say goodbye to charging headaches and hello to a smoother electric driving experience."
-                           href=""
-                           icon={<TbChargingPile color="#339557" size={40} />} />
+              <FeatureCard title="Connected Car"
+                           description="Unlock next-gen features for a connected car experience."
+                           icon={<IoIosCellular color="#339557" size={40} />} />
               <FeatureCard title="EV Conversions"
                            description="Get ready for the ultimate driving experience. Say goodbye to gas costs and emissions and hello to a more sustainable, efficient ride. Stay tuned for more updates and join the future of driving today."
-                           href="/"
                            icon={<MdOutlineElectricCar color="#339557" size={40} />} />
             </SimpleGrid>
           </animated.div>
@@ -228,42 +225,51 @@ function HeroImages() {
   )
 }
 
-function FeatureCard({title, description, href, icon}: {title: string, description: string, href: string, icon: any}) {
+function FeatureCard({title, description, icon, href = null}: {title: string, description: string, href?: string, icon: any}) {
   return (
     <Box bg="#121212" p="xl" style={{borderRadius: "8px"}}>
       {icon}
       <Title order={3} mt={10} fw={400} color="white">{title}</Title>
       <Text size="sm" mt={12}>{description}</Text>
-      <Link href={href}>
-        <Box>
-          <Box mt={12}
-               sx={(theme) => ({
-                 display: "inline-flex",
-                 alignItems: "center",
-                 position: "relative",
-                 borderBottom: "2px solid rgba(0, 0, 0, 0)",
-                 '&:after': {
-                   content: "''",
-                   position: "absolute",
-                   width: "0",
-                   height: "2px",
-                   display: "block",
-                   marginTop: "25px",
-                   right: 0,
-                   background: "white",
-                   transition: "width .5s ease"
-                 },
-                 '&:hover:after': {
-                   width: "100%",
-                   left: "0",
-                   background: "white"
-                 }
-               })}>
-            <Text color="#ffff" size="sm">Read More</Text>
-            <FiArrowUpRight style={{marginLeft: "6px"}} />
-          </Box>
-        </Box>
-      </Link>
+      {
+        href &&
+          <Link href={href}>
+              <ReadMoreButton />
+          </Link>
+      }
+    </Box>
+  )
+}
+
+function ReadMoreButton() {
+  return (
+    <Box>
+      <Box mt={12}
+           sx={(theme) => ({
+             display: "inline-flex",
+             alignItems: "center",
+             position: "relative",
+             borderBottom: "2px solid rgba(0, 0, 0, 0)",
+             '&:after': {
+               content: "''",
+               position: "absolute",
+               width: "0",
+               height: "2px",
+               display: "block",
+               marginTop: "25px",
+               right: 0,
+               background: "white",
+               transition: "width .5s ease"
+             },
+             '&:hover:after': {
+               width: "100%",
+               left: "0",
+               background: "white"
+             }
+           })}>
+        <Text color="#ffff" size="sm">Read More</Text>
+        <FiArrowUpRight style={{marginLeft: "6px"}} />
+      </Box>
     </Box>
   )
 }
