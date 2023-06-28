@@ -30,7 +30,7 @@ export default function NewLandingPage() {
             <Title order={1} style={{textShadow: "1px 1px 4px black", fontSize: 54}}>
               {"The all new Kia EV6 GT" + ''} <br/>
             </Title>
-            <Text size="sm" my="lg" color="#b2b2b2">by Joschua Haß - 16.03.2023- 3 minute read</Text>
+            <Text size="sm" my="lg" color="#b2b2b2">by Joschua Haß - 16.03.2023 - 3 minute read</Text>
           </Box>
         </Box>
       </Box>
@@ -68,5 +68,13 @@ export async function getStaticProps() {
   return {
     notFound: !IS_BLOG_ENABLED,
     props: {}
+  }
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+    ],
+    fallback: true,
   }
 }
