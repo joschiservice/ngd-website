@@ -64,14 +64,14 @@ export default function NewLandingPage() {
   return (
     <PublicLayout title="Sparky" hoverNavbar={true}>
       <ProductBanner />
-      <animated.div style={{position: "absolute", left: "50%", ...chevronDownAnim}}>
+      <animated.div style={{position: "absolute", left: 0, right: 0, marginRight: "auto", marginLeft: "auto", width: "20px", ...chevronDownAnim}}>
         <IoChevronDown size={32} />
       </animated.div>
       <Container size="xl">
         <SimpleGrid cols={isSmallDevice ? 1 : 2}>
           <FeatureCard title="Siri Integration" description="Easily check the status or control your car"
                        imgSrc={BetterKiaSiriPreviewImg} imgAlt="BetterKia Siri demonstration"
-                       imgPosition="50% 0%" color="#2F58CD" pb={false}
+                       imgPosition="50% 5%" color="#2F58CD" pb={false}
                        imgHeightDesktop={350} imgHeightMobile={250} />
 
           <FeatureCard title="Always Up-To-Date" description="View charging information at a glance"
