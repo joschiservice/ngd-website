@@ -7,9 +7,9 @@ export function FeatureCard({title, description, imgSrc, imgAlt, imgHeightDeskto
   const isSmallDevice = useMediaQuery('(max-width: 1020px)');
 
   return (
-    <Flex px="xl" pt="xl" pb={pb ? "xl" : 0} sx={{width: "100%", background: color, borderRadius: "16px"}} direction="column"
+    <Flex px="xl" pt="xl" pb={pb ? 0 : 0} sx={{width: "100%", background: color, borderRadius: "16px"}} direction="column"
           justify="space-between">
-      <Box>
+      <Box mb="sm">
         <Title order={2} color="white">{title}</Title>
         <Text style={{color: "#bebebe"}}>{description}</Text>
       </Box>
