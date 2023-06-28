@@ -225,7 +225,7 @@ function HeroImages() {
   )
 }
 
-function FeatureCard({title, description, icon, href = null}: {title: string, description: string, href?: string, icon: any}) {
+function FeatureCard({title, description, icon, href = null}: {title: string, description: string, href?: string | null, icon: any}) {
   return (
     <Box bg="#121212" p="xl" style={{borderRadius: "8px"}}>
       {icon}
