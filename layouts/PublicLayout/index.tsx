@@ -25,9 +25,14 @@ const NAV_ITEMS = [
     href: "/"
   },
   {
-    id: "products",
-    title: "Products",
-    href: "/products"
+    id: "ng_one",
+    title: "NG 1",
+    href: "/products/ng-one"
+  },
+  {
+    id: "sparky",
+    title: "Sparky",
+    href: "/products/sparky"
   },
   {
     id: "blog",
