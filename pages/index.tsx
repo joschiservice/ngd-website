@@ -4,20 +4,11 @@ import backgroundImage from "@/public/img/tesla-rear-light.jpg";
 import hyundaiInStyleImage from "@/public/img/hyundai-in-style.jpg";
 import polestarImage from "@/public/img/polestar-night.jpg";
 import {animated, easings, useInView, useSpring} from "@react-spring/web";
-import {BsFillLightningChargeFill, BsPlayBtn, BsLightbulb} from "react-icons/bs";
-import {FiArrowUpRight} from "react-icons/fi";
 import {IoIosCellular} from "react-icons/io";
 import {MdOutlineElectricCar} from "react-icons/md"
 import {GiCarSeat} from "react-icons/gi"
-import Link from "next/link";
 import {
-  Accordion,
-  Box, Button,
-  Center,
   Container,
-  Flex,
-  Grid,
-  Group,
   SimpleGrid,
   Space,
   Stack,
@@ -25,10 +16,19 @@ import {
   Title
 } from "@mantine/core";
 import {useEffect, useRef, useState} from "react";
-import {useMediaQuery, useTimeout} from "@mantine/hooks";
-import {MdOutlineSmartDisplay} from "react-icons/md"
+import {useMediaQuery} from "@mantine/hooks";
 import PublicLayout from "@/layouts/PublicLayout";
 import {IS_BLOG_ENABLED} from "@/config";
+import { IconFeatureCard } from "@/components/cards/IconFeatureCard";
+import { VisitBlogBanner } from "@/components/banners/VisitBlogBanner";
+import { FAQ } from "@/components/FAQ";
+
+const FaqEntries = [
+  { 
+    question: 'Are you only building products for BEV/FHEV vehicles and why?', 
+    answer: 'Yes and no. We will also release some products, which are independent of the type of vehicle, but we are going to primarily build products and prototypes for vehicles using an alternative drive systems first. We have decided to go this way as we would like to help the world to complete the transition to emission-free vehicles in the next coming years.' 
+  }
+]
 
 export default function NewLandingPage() {
   const isSmallDevice = useMediaQuery('(max-width: 1020px)');
@@ -107,66 +107,31 @@ export default function NewLandingPage() {
           <Space h={80} />
           <animated.div ref={featureItemsRef} style={featureItemsAnimation}>
             <SimpleGrid cols={isSmallDevice ? 1 : 3} mt="xl">
-              <FeatureCard title="Interior Upgrades"
-                           description="Unleash the full potential of your car with advanced tech! Transform your rides into tech-savvy masterpieces with seamless infotainment, ambient lighting, and cutting-edge upgrades. Experience the next level of driving excellence and elevate your journeys to new heights!"
-                           icon={<GiCarSeat color="#339557" size={40} />} />
-              <FeatureCard title="Connected Car"
-                           description="Unlock next-gen features for a connected car experience."
-                           icon={<IoIosCellular color="#339557" size={40} />} />
-              <FeatureCard title="EV Conversions"
-                           description="Get ready for the ultimate driving experience. Say goodbye to gas costs and emissions and hello to a more sustainable, efficient ride. Stay tuned for more updates and join the future of driving today."
-                           icon={<MdOutlineElectricCar color="#339557" size={40} />} />
+              <IconFeatureCard title="Interior Upgrades"
+                               description="Unleash the full potential of your car with advanced tech! Transform your rides into tech-savvy masterpieces with seamless infotainment, ambient lighting, and cutting-edge upgrades. Experience the next level of driving excellence and elevate your journeys to new heights!"
+                               icon={<GiCarSeat color="#339557" size={40} />} />
+              <IconFeatureCard title="Connected Car"
+                               description="Unlock next-gen features for a connected car experience."
+                               icon={<IoIosCellular color="#339557" size={40} />} />
+              <IconFeatureCard title="EV Conversions"
+                               description="Get ready for the ultimate driving experience. Say goodbye to gas costs and emissions and hello to a more sustainable, efficient ride. Stay tuned for more updates and join the future of driving today."
+                               icon={<MdOutlineElectricCar color="#339557" size={40} />} />
             </SimpleGrid>
           </animated.div>
         </Container>
         <Space h={80} />
-        <Container size="xl">
-          <Title order={1} align={"center"} mb="lg" color="white">FAQ</Title>
-          <Accordion defaultValue="customization">
-            <Accordion.Item value="customization">
-              <Accordion.Control><Box display="flex" mr={8}><Title color="white" order={4}>Are you only building products for BEV/FHEV vehicles and why?</Title></Box></Accordion.Control>
-              <Accordion.Panel>
-                Yes and no. We will also release some products, which are independent of the type of vehicle, but we are going to primarily build products and prototypes for vehicles
-                using an alternative drive systems first. We have decided to go this way as we would like to help the world to complete the transition to emission-free vehicles
-                in the next coming years.
-              </Accordion.Panel>
-            </Accordion.Item>
-          </Accordion>
-        </Container>
+        <FAQ entries={FaqEntries} />
         {
           IS_BLOG_ENABLED ?
             (
               <>
                 <Space h={80}/>
-                <BlogBanner/>
+                <VisitBlogBanner/>
               </>
             ): null
         }
       </div>
     </PublicLayout>
-  )
-}
-
-function BlogBanner() {
-  const isSmallDevice = useMediaQuery('(max-width: 1020px)');
-
-  return (
-    <div style={{background: "linear-gradient(90deg, rgba(10,31,89,1) 0%, rgba(21,182,166,1) 100%)"}}>
-      <Container size="xl" py={60}>
-        <Flex align="center" direction="column">
-          <Title color="white" order={isSmallDevice ? 2 : 1}>Stay Up-To-Date On Our Blog</Title>
-          <Text color="white" align="center" mt="md" maw={550}>
-            On our blog, we are regularly releasing development updates about our products, news about new developments
-            in the rapidly changing electric vehicle industry and other milestones.
-          </Text>
-          <Link href="/blog">
-            <Button mt="xl" size="md" color="green">
-              Visit Our Blog
-            </Button>
-          </Link>
-        </Flex>
-      </Container>
-    </div>
   )
 }
 
@@ -222,54 +187,5 @@ function HeroImages() {
         })
       }
     </>
-  )
-}
-
-function FeatureCard({title, description, icon, href = null}: {title: string, description: string, href?: string | null, icon: any}) {
-  return (
-    <Box bg="#121212" p="xl" style={{borderRadius: "8px"}}>
-      {icon}
-      <Title order={3} mt={10} fw={400} color="white">{title}</Title>
-      <Text size="sm" mt={12}>{description}</Text>
-      {
-        href &&
-          <Link href={href}>
-              <ReadMoreButton />
-          </Link>
-      }
-    </Box>
-  )
-}
-
-function ReadMoreButton() {
-  return (
-    <Box>
-      <Box mt={12}
-           sx={(theme) => ({
-             display: "inline-flex",
-             alignItems: "center",
-             position: "relative",
-             borderBottom: "2px solid rgba(0, 0, 0, 0)",
-             '&:after': {
-               content: "''",
-               position: "absolute",
-               width: "0",
-               height: "2px",
-               display: "block",
-               marginTop: "25px",
-               right: 0,
-               background: "white",
-               transition: "width .5s ease"
-             },
-             '&:hover:after': {
-               width: "100%",
-               left: "0",
-               background: "white"
-             }
-           })}>
-        <Text color="#ffff" size="sm">Read More</Text>
-        <FiArrowUpRight style={{marginLeft: "6px"}} />
-      </Box>
-    </Box>
   )
 }
