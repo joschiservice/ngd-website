@@ -4,9 +4,6 @@ import backgroundImage from "@/public/img/tesla-rear-light.jpg";
 import hyundaiInStyleImage from "@/public/img/hyundai-in-style.jpg";
 import polestarImage from "@/public/img/polestar-night.jpg";
 import {animated, easings, useInView, useSpring} from "@react-spring/web";
-import {IoIosCellular} from "react-icons/io";
-import {MdOutlineElectricCar} from "react-icons/md"
-import {GiCarSeat} from "react-icons/gi"
 import {
   Container,
   SimpleGrid,
@@ -22,6 +19,7 @@ import {IS_BLOG_ENABLED} from "@/config";
 import { IconFeatureCard } from "@/components/cards/IconFeatureCard";
 import { VisitBlogBanner } from "@/components/banners/VisitBlogBanner";
 import { FAQ } from "@/components/FAQ";
+import { OfferedServicesSection } from "@/sections/OfferedServicesSection";
 
 const FaqEntries = [
   { 
@@ -41,27 +39,6 @@ export default function NewLandingPage() {
       duration: 1500
     }
   })
-
-  const [featureItemsRef, featureItemsAnimation] = useInView(
-    () => ({
-      from: {
-        opacity: 0,
-        y: 100,
-      },
-      to: {
-        opacity: 1,
-        y: 0,
-      },
-      config: {
-        easing: easings.easeOutExpo,
-        duration: 1500
-      }
-    }),
-    {
-      rootMargin: '0% 0%',
-      once: true
-    }
-  )
 
   return (
     <PublicLayout title="Home">
@@ -97,28 +74,7 @@ export default function NewLandingPage() {
               </animated.div>
             )
         }
-        <Container size="xl">
-          <SimpleGrid cols={isSmallDevice ? 1 : 2} spacing={isSmallDevice ? 10 : 40}>
-            <Title size={isSmallDevice ? 28 : 34} color="white">{"There's much more to it than just driving from A to B"}</Title>
-            <Text size="sm">
-              Transform your car into a world of endless entertainment and innovation. With cutting-edge technology and seamless integration, every journey becomes an experience to remember. Say goodbye to mundane drives and hello to a new era of excitement and convenience.
-            </Text>
-          </SimpleGrid>
-          <Space h={80} />
-          <animated.div ref={featureItemsRef} style={featureItemsAnimation}>
-            <SimpleGrid cols={isSmallDevice ? 1 : 3} mt="xl">
-              <IconFeatureCard title="Interior Upgrades"
-                               description="Unleash the full potential of your car with advanced tech! Transform your rides into tech-savvy masterpieces with seamless infotainment, ambient lighting, and cutting-edge upgrades. Experience the next level of driving excellence and elevate your journeys to new heights!"
-                               icon={<GiCarSeat color="#339557" size={40} />} />
-              <IconFeatureCard title="Connected Car"
-                               description="Unlock next-gen features for a connected car experience."
-                               icon={<IoIosCellular color="#339557" size={40} />} />
-              <IconFeatureCard title="EV Conversions"
-                               description="Get ready for the ultimate driving experience. Say goodbye to gas costs and emissions and hello to a more sustainable, efficient ride. Stay tuned for more updates and join the future of driving today."
-                               icon={<MdOutlineElectricCar color="#339557" size={40} />} />
-            </SimpleGrid>
-          </animated.div>
-        </Container>
+        <OfferedServicesSection />
         <Space h={80} />
         <FAQ entries={FaqEntries} />
         {

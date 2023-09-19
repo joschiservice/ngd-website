@@ -9,8 +9,8 @@ export function FAQ({ entries }: Props) {
         <Container size="xl">
             <Title order={1} align={"center"} mb="lg" color="white">FAQ</Title>
             <Accordion defaultValue="customization">
-                {entries.map((item) =>
-                    <Accordion.Item value="customization">
+                {entries.map((item, index) =>
+                    <Accordion.Item key={index} value="customization">
                         <Accordion.Control>
                             <Box display="flex" mr={8}>
                                 <Title color="white" order={4}>{item.question}</Title>

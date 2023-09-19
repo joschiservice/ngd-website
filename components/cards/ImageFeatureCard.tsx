@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import {useMediaQuery} from "@mantine/hooks";
 
-export function FeatureCard({title, description, imgSrc, imgAlt, imgHeightDesktop, imgHeightMobile, imgPosition, color, pb = true}: FeatureCardProps) {
+export function ImageFeatureCard({title, description, imgSrc, imgAlt, imgHeightDesktop, imgHeightMobile, imgPosition, color, pb = true}: FeatureCardProps) {
   const isSmallDevice = useMediaQuery('(max-width: 1020px)');
 
   return (

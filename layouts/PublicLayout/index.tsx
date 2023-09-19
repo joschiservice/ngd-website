@@ -26,7 +26,7 @@ const NAV_ITEMS = [
   },
   {
     id: "ng_one",
-    title: "NG 1",
+    title: "NG 001",
     href: "/products/ng-one"
   },
   {

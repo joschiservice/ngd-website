@@ -4,7 +4,11 @@ import Image from "next/image";
 import BetterKiaPreviewImg from "@/public/img/better-kia-preview.png";
 import React from "react";
 
-export function ProductBanner() {
+interface Props {
+  productName: string;
+}
+
+export function SparkyHero({productName}: Props) {
   const titleAnimation = useSpring(
     {
       from: {
@@ -89,7 +93,7 @@ export function ProductBanner() {
             </animated.div>
           </Box>
           <Box style={{height: "70vh", width: "30%", position: "relative", overflow: "hidden"}}>
-            <Image alt="BetterKia app preview" src={BetterKiaPreviewImg} fill={true} style={{objectFit: "contain"}} />
+            <Image alt={`${productName} app preview`} src={BetterKiaPreviewImg} fill={true} style={{objectFit: "contain"}} />
           </Box>
         </Flex>
       </MediaQuery>
@@ -105,7 +109,7 @@ export function ProductBanner() {
                 </Title>
               </animated.div>
               <Box style={{height: "58vh", width: "100%", position: "relative", overflow: "hidden"}}>
-                <Image alt="BetterKia app preview" src={BetterKiaPreviewImg} fill={true} style={{objectFit: "contain"}} />
+                <Image alt={`${productName} app preview`} src={BetterKiaPreviewImg} fill={true} style={{objectFit: "contain"}} />
               </Box>
             </Box>
           </Box>

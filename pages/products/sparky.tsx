@@ -1,37 +1,46 @@
-import styles from "@/styles/Home.module.css";
-import {BsFillLightningChargeFill} from "react-icons/bs";
-import Link from "next/link";
 import {
-  Accordion,
   Box,
-  Center,
   Container,
   Flex,
-  Grid,
-  Group,
   SimpleGrid,
-  Space,
-  List,
-  Stack,
-  Text,
-  Title, ThemeIcon, MediaQuery
+  Text
 } from "@mantine/core";
-import {NewsItem} from "@/components/Blog/NewsItems/NewsItem";
-import { SmallNewsItem } from "@/components/Blog/NewsItems/SmallNewsItem";
 import PublicLayout from "@/layouts/PublicLayout";
-import {MediumNewsItem} from "@/components/Blog/NewsItems/MediumNewsItem";
-import {animated, easings, useInView, useSpring, useTrail} from "@react-spring/web";
+import {animated, easings, useSpring} from "@react-spring/web";
 import React from "react";
-import {AnimatedList} from "@/components/shared/List";
-import {MdDesignServices, MdRecordVoiceOver, MdHvac, MdOutlineBatteryChargingFull, MdAutoGraph} from "react-icons/md";
-import Image from "next/image";
-import BetterKiaPreviewImg from "../../public/img/better-kia-preview.png";
 import BetterKiaSiriPreviewImg from "../../public/img/better-kia-siri-preview.png";
 import BetterKiaLiveActivityPreviewImg from "../../public/img/better-kia-live-activity-preview.png";
 import {IoChevronDown} from "react-icons/io5";
 import {useMediaQuery} from "@mantine/hooks";
-import {ProductBanner} from "@/components/Products/ProductBanner";
-import {FeatureCard} from "@/components/Products/FeatureCard";
+import {SparkyHero} from "@/components/heros/SparkyHero";
+import {ImageFeatureCard} from "@/components/cards/ImageFeatureCard";
+
+const PRODUCT_NAME = "Sparky";
+
+const FEATURES = [
+  {
+    title: "Siri Integration",
+    description: "Easily check the status or control your car",
+    img: BetterKiaSiriPreviewImg,
+    imgAlt: `${PRODUCT_NAME} Siri demo`,
+    imgPosition: "50% 5%",
+    imgHeightDesktop: 350,
+    imgHeightMobile: 250,
+    paddingBottom: false,
+    color: "#2F58CD"
+  },
+  {
+    title: "Always Up-To-Date",
+    description: "View charging information at a glance",
+    img: BetterKiaLiveActivityPreviewImg,
+    imgAlt: `${PRODUCT_NAME} charging live activity demonstration`,
+    imgPosition: "50% 94%",
+    imgHeightDesktop: 300,
+    imgHeightMobile: 200,
+    paddingBottom: undefined,
+    color: "#21262d"
+  }
+];
 
 export default function NewLandingPage() {
   const chevronDownAnim = useSpring(
@@ -55,29 +64,20 @@ export default function NewLandingPage() {
     }
   )
 
-  const FEATURE_ICON_SIZE = 26
-
-  const hoverNavbar = !useMediaQuery('(max-width: 440px)');
-
   const isSmallDevice = useMediaQuery('(max-width: 1020px)');
 
   return (
     <PublicLayout title="Sparky" hoverNavbar={true}>
-      <ProductBanner />
+      <SparkyHero productName={PRODUCT_NAME} />
       <animated.div style={{position: "absolute", left: 0, right: 0, marginRight: "auto", marginLeft: "auto", width: "20px", ...chevronDownAnim}}>
         <IoChevronDown size={32} />
       </animated.div>
       <Container size="xl">
         <SimpleGrid cols={isSmallDevice ? 1 : 2}>
-          <FeatureCard title="Siri Integration" description="Easily check the status or control your car"
-                       imgSrc={BetterKiaSiriPreviewImg} imgAlt="BetterKia Siri demonstration"
-                       imgPosition="50% 5%" color="#2F58CD" pb={false}
-                       imgHeightDesktop={350} imgHeightMobile={250} />
-
-          <FeatureCard title="Always Up-To-Date" description="View charging information at a glance"
-                       imgSrc={BetterKiaLiveActivityPreviewImg} imgAlt="BetterKia charging live activity demonstration"
-                       imgPosition="50% 94%" color="#21262d"
-                       imgHeightDesktop={300} imgHeightMobile={200} />
+          {
+            FEATURES.map((item, index) => 
+            <ImageFeatureCard key={index} title={item.title} description={item.description} imgSrc={item.img} imgAlt={item.imgAlt} imgPosition={item.imgPosition} color={item.color} pb={item.paddingBottom} imgHeightDesktop={item.imgHeightDesktop} imgHeightMobile={item.imgHeightMobile} />)
+          }
         </SimpleGrid>
 
         <Text color="dimmed" size={isSmallDevice ? "xs" : "sm"} align="center" mt={isSmallDevice ? 60 : 120}>
