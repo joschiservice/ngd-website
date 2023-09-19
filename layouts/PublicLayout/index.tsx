@@ -9,7 +9,7 @@ import {useRouter} from "next/router";
 import {useMediaQuery} from "@mantine/hooks";
 import Head from "next/head";
 import {useEffect, useState} from "react";
-import {IS_BLOG_ENABLED} from "@/config";
+import {BRAND_NAME, IS_BLOG_ENABLED} from "@/config";
 
 interface Props {
   children: any,
@@ -37,7 +37,8 @@ const NAV_ITEMS = [
   {
     id: "blog",
     title: "Blog",
-    href: "/blog"
+    href: "/blog",
+    isDisabled: !IS_BLOG_ENABLED
   },
   {
     id: "imprint",
@@ -82,20 +83,19 @@ function HamburgerMenu({items}: { items: { id: string, title: string, href: stri
 
 export default function PublicLayout({children, title, hoverNavbar = true}: Props) {
   const router = useRouter();
+  const [navItems] = useState<{
+    id: string;
+    title: string;
+    href: string;
+    isDisabled?: boolean;
+}[]>(NAV_ITEMS.filter(item => item.isDisabled === undefined || !item.isDisabled));
 
   const isSmallDevice = useMediaQuery('(max-width: 1020px)');
-
-  let navItems = NAV_ITEMS;
-
-  if (!IS_BLOG_ENABLED) {
-    const indexToRemove = NAV_ITEMS.findIndex(item => item.id === "blog");
-    navItems = indexToRemove >= 0 ? NAV_ITEMS.filter(item => item.id !== "blog") : NAV_ITEMS;
-  }
 
   return (
     <>
       <Head>
-        <title>{title + " | NextGen Drive"}</title>
+        <title>{`${title} | ${BRAND_NAME}`}</title>
         <meta name="theme-color" content="#000000" />
       </Head>
       <div style={{background: "black"}}>
@@ -120,7 +120,7 @@ export default function PublicLayout({children, title, hoverNavbar = true}: Prop
           <Box>
             <Flex align="center">
               <BsFillLightningChargeFill style={{fontSize: 28, color: '#cc910a'}} />
-              <Title pr="sm" order={2}>NextGen Drive</Title>
+              <Title pr="sm" order={2}>{BRAND_NAME}</Title>
             </Flex>
             <Text mt="sm" color="dimmed" size="md">
               Creating amazing solutions for the electrified driving experience.
@@ -142,7 +142,7 @@ export default function PublicLayout({children, title, hoverNavbar = true}: Prop
           </Flex>
           <Divider mt={28} />
           <Flex py={32} style={{justifyContent: "space-between"}}>
-            <Text>© 2023 NextGen Drive</Text>
+            <Text>© 2023 {BRAND_NAME}</Text>
             <Flex gap="md">
               { /* <FaTwitter size={FOOTER_ICON_SIZE} /> */ }
               <Link href="https://instagram.com/ngdrive">

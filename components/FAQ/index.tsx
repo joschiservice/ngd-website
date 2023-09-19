@@ -1,7 +1,7 @@
 import { Container, Title, Accordion, Box } from "@mantine/core";
 
 interface Props {
-    entries: { question: string; answer: string, }[]
+    entries: { question: string; answer: any; }[]
 }
 
 export function FAQ({ entries }: Props) {
