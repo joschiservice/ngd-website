@@ -1,10 +1,25 @@
 import PublicLayout from "@/layouts/PublicLayout";
-import { Text, Title } from "@mantine/core";
+import { Space, Stack, Text, Title } from "@mantine/core";
 import React from "react";
 import ngOneTeaserImage from "@/public/img/ng_one_teaser.png";
 import { ImageHero } from "@/components/heros/ImageHero";
+import { FAQ } from "@/components/FAQ";
 
 const PRODUCT_NAME = "NG 001";
+
+const PAGE_CONFIG = {
+  spaceBetweenSections: 80,
+  faq: [
+    {
+      question: `What's the car, which is used as the ${PRODUCT_NAME} and why did you choose this car?`,
+      answer: `The ${PRODUCT_NAME} is based on the 2020 Kia e-Soul 64kwh. We choose to use the Kia for this project, as we didn't have the budget to buy a specific car and therefore are using the private car of the founder.`
+    },
+    {
+      question: "Which products will be released later and what's the state of the products?",
+      answer: "This decision will be based on market research, community feedback and pre-orders in the future. We can't really say anything yet, as we just recently made this project public and as we are still developing and optimizing prototypes. Releasing any of this products will require quite some fine tuning and testing. One exception is our Sparky app, which might be released soon."
+    }
+  ]
+}
 
 export default function NgOnePage() {
   return (
@@ -17,6 +32,10 @@ export default function NgOnePage() {
           The {PRODUCT_NAME} is our very first electric development vehicle, where we continuously develop our first set of demo hardware & software products.
         </Text>
       </ImageHero>
+
+      <Space h={PAGE_CONFIG.spaceBetweenSections} />
+
+      <FAQ entries={PAGE_CONFIG.faq} />
     </PublicLayout>
   )
 }

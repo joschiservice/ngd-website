@@ -28,17 +28,17 @@ const PAGE_CONFIG = {
   faq: [
     { 
       question: 'Are you only building products for BEV vehicles and why?', 
-      answer: 'Yes and no. We will also release some products, which may be independent of the type of vehicle, but we are going to primarily build products and prototypes optimized for vehicles using an alternative drive system first. We have decided to go this way as we would like to help the world to complete the transition to emission-free vehicles in the next coming years.' 
+      answer: 'We are primarily building and testing product prototypes optimized for electric vehicles, we might also release some products, which may be independent of the type of vehicle. We have decided to go this way as we would like to help the world to complete the transition to emission-free vehicles in the next coming years and believe that electric vehicles are the most suitable ones for this transition as of the current state of technology and infrastructure.' 
     },
     {
       question: 'Is this a commercial project and how is this project funded?',
-      answer: 'While we are trying to work on our current in-development products as professional as possible, we are not an officially registered company (yet). So far, the development of prototype products is 100% funded by our founder.'
+      answer: 'While we are trying to work on our current in-development product prototypes as professional as possible, we are not an officially registered company (yet). So far, the development of prototype products is 100% funded by our founder.'
     },
     {
       question: 'How can I support this project?',
       answer: 
       <>
-        Firstly, you can share this project with people, that might be interested in this project. If you think you can support us in other ways, you can contact us at 
+        Firstly, you can share this project with people, who might be interested in this project. If you think you can support us in other ways, you can contact us at 
         <Link href="mailto:contact@nextgendrive.com">contact@nextgendrive.com</Link>. You can also <Link href="https://buymeacoffee.com">buy us some coffee</Link>.
       </>
     }
