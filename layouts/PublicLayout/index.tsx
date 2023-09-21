@@ -88,14 +88,17 @@ function HamburgerMenu({ items }: { items: { id: string, title: string, href: st
 
   return (
     <>
-      <RxHamburgerMenu style={{ fontSize: 28, color: "white" }} onClick={toogleMenu} />
+      <Box>
+        <RxHamburgerMenu style={{ fontSize: 28, color: "white" }} onClick={toogleMenu} />
+      </Box>
       {
         isOpen ?
-          <Box p="xl" style={{ minHeight: "100vh", minWidth: "100vw", zIndex: 40, position: "fixed", top: 0, left: 0, backgroundColor: "rgba(0,0,0,1)" }}>
-            <Flex justify="end" style={{ minWidth: "100%" }}>
+          <Box p={18} style={{ minHeight: "100vh", minWidth: "100vw", zIndex: 40, position: "fixed", top: 0, left: 0, backgroundColor: "rgba(0,0,0,1)" }}>
+            <Flex justify="space-between" style={{ minWidth: "100%" }}>
+              <BsFillLightningChargeFill className={styles.neonLogo} style={{ fontSize: 28 }} />
               <MdClose style={{ fontSize: 28, color: "white" }} onClick={toogleMenu} />
             </Flex>
-            <Stack spacing="xl" mt="xl">
+            <Stack spacing="xl" mt={35}>
               {
                 items.map(navItem =>
                   <Link key={navItem.id} href={navItem.href} className={styles.navLink}

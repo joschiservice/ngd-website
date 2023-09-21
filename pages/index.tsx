@@ -169,7 +169,7 @@ function HeroImages() {
       {
         images.map(image => {
           return <Image key={image.id} src={image.src} alt={image.alt} fill={true} style={{objectFit: "cover", objectPosition: image.objectPosition, opacity: image.id == activeImageId ? 1 : 0, transition: "opacity 2s ease-in-out"}}
-                        priority={image.id == activeImageId}/>
+                        priority={image.id == 1} placeholder="blur" sizes="(max-width: 1020px)100vw, 60vw"/>
         })
       }
     </>

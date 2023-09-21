@@ -1,9 +1,12 @@
 import PublicLayout from "@/layouts/PublicLayout";
-import { Space, Stack, Text, Title } from "@mantine/core";
+import { Container, Space, Stack, Text, Title } from "@mantine/core";
 import React from "react";
 import ngOneTeaserImage from "@/public/img/ng_one_teaser.png";
 import { ImageHero } from "@/components/heros/ImageHero";
 import { FAQ } from "@/components/FAQ";
+import { SideImageFeatureCard } from "@/components/cards/SideImageFeatureCard";
+import BetterKiaLiveActivityPreviewImg from "../../public/img/better-kia-live-activity-preview.png";
+
 
 const PRODUCT_NAME = "NG 001";
 
@@ -32,6 +35,11 @@ export default function NgOnePage() {
           The {PRODUCT_NAME} is our very first electric development vehicle, where we continuously develop our first set of demo hardware & software products.
         </Text>
       </ImageHero>
+
+      <Container size="xl">
+        <SideImageFeatureCard title="Ambient Lightning" description="This is an example description related to our ambient lighting system in the vehicle"
+        imgSrc={BetterKiaLiveActivityPreviewImg} imgAlt="IMG ALT" imgPosition="50% 50%" color="#21262d" />
+      </Container>
 
       <Space h={PAGE_CONFIG.spaceBetweenSections} />
 

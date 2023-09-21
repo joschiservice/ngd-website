@@ -1,5 +1,5 @@
 import PublicLayout from "@/layouts/PublicLayout";
-import { Open_Sans } from '@next/font/google';
+import { Open_Sans } from "next/font/google";
 import { Box, Title } from "@mantine/core";
 
 const robotoText = Open_Sans({
