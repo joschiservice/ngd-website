@@ -2,9 +2,14 @@ import { Flex, Title, Text,Button } from "@mantine/core";
 import { BaseBanner } from "./BaseBanner";
 import Link from "next/link";
 import { useMediaQuery } from "@mantine/hooks";
+import {IS_BLOG_ENABLED} from "@/config";
 
 export function VisitBlogBanner() {
     const isSmallDevice = useMediaQuery('(max-width: 1020px)');
+
+    if (!IS_BLOG_ENABLED) {
+        return <></>;
+    }
     
     return (
         <BaseBanner background="linear-gradient(90deg, rgba(10,31,89,1) 0%, rgba(21,182,166,1) 100%)">

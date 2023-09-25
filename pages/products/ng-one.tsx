@@ -37,8 +37,13 @@ export default function NgOnePage() {
       </ImageHero>
 
       <Container size="xl">
-        <SideImageFeatureCard title="Ambient Lightning" description="This is an example description related to our ambient lighting system in the vehicle"
-        imgSrc={BetterKiaLiveActivityPreviewImg} imgAlt="IMG ALT" imgPosition="50% 50%" color="#21262d" />
+        <Stack spacing="xl">
+          <SideImageFeatureCard title="Ambient Lightning" description="This is an example description related to our ambient lighting system in the vehicle"
+                                imgSrc={BetterKiaLiveActivityPreviewImg} imgAlt="IMG ALT" imgPosition="50% 50%" color="#21262d" />
+
+          <SideImageFeatureCard title="Custom Mobile App" description="This is an example description related to our ambient lighting system in the vehicle"
+                                imgSrc={BetterKiaLiveActivityPreviewImg} imgAlt="IMG ALT" imgPosition="50% 50%" color="#21262d" />
+        </Stack>
       </Container>
 
       <Space h={PAGE_CONFIG.spaceBetweenSections} />
