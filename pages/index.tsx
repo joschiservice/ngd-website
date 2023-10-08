@@ -38,8 +38,7 @@ const PAGE_CONFIG = {
       question: 'How can I support this project?',
       answer: 
       <>
-        Firstly, you can share this project with people, who might be interested in this project. If you think you can support us in other ways, you can contact us at 
-        <Link href="mailto:contact@nextgendrive.com">contact@nextgendrive.com</Link>. You can also <Link href="https://buymeacoffee.com">buy us some coffee</Link>.
+        Firstly, you can share this project with people, who might be interested in this project. If you think you can support us in other ways, you can contact us at <Link href="mailto:contact@nextgendrive.com" style={{color: 'white'}}>contact@nextgendrive.com</Link>.
       </>
     }
   ],

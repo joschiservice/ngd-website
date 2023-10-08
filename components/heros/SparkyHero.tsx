@@ -99,7 +99,7 @@ export function SparkyHero({productName, pageConfig}: Props) {
               </Text>
             </animated.div>
             <animated.div style={releaseInfoAnim}>
-              <Text color="dimmed">{pageConfig.productDescription}</Text>
+              <Text color="dimmed">{pageConfig.releaseInfo}</Text>
             </animated.div>
           </Box>
           <Box style={{height: "70vh", width: "30%", position: "relative", overflow: "hidden"}}>

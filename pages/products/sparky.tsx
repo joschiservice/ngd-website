@@ -10,6 +10,7 @@ import {animated, easings, useSpring} from "@react-spring/web";
 import React from "react";
 import BetterKiaSiriPreviewImg from "../../public/img/better-kia-siri-preview.png";
 import BetterKiaLiveActivityPreviewImg from "../../public/img/better-kia-live-activity-preview.png";
+import BetterKiaDriveHistoryPreviewImg from "../../public/img/better-kia-drive-history-preview.jpg";
 import {IoChevronDown} from "react-icons/io5";
 import {useMediaQuery} from "@mantine/hooks";
 import {SparkyHero} from "@/components/heros/SparkyHero";
@@ -48,8 +49,8 @@ const PAGE_CONFIG = {
       title: "Driving History",
       description: "Get relevant information about your recent trips",
       imgAlt: "",
-      img: BetterKiaLiveActivityPreviewImg, // ToDo: Image
-      imgPosition: "50% 94%",
+      img: BetterKiaDriveHistoryPreviewImg,
+      imgPosition: "50% 6%",
       imgHeightDesktop: 300,
       imgHeightMobile: 200,
       paddingBottom: undefined,
