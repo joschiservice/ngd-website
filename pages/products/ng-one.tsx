@@ -5,7 +5,8 @@ import ngOneTeaserImage from "@/public/img/ng_one_teaser.png";
 import { ImageHero } from "@/components/heros/ImageHero";
 import { FAQ } from "@/components/FAQ";
 import { SideImageFeatureCard } from "@/components/cards/SideImageFeatureCard";
-import BetterKiaLiveActivityPreviewImg from "../../public/img/better-kia-live-activity-preview.png";
+import BetterKiaPreviewImg from "../../public/img/better-kia-preview.png";
+import NgOneAmbientLightTeaserImg from "../../public/img/ng-one-ambient-light-teaser.png";
 
 
 const PRODUCT_NAME = "NG 001";
@@ -39,10 +40,10 @@ export default function NgOnePage() {
       <Container size="xl">
         <Stack spacing="xl">
           <SideImageFeatureCard title="Ambient Lightning" description="This is an example description related to our ambient lighting system in the vehicle"
-                                imgSrc={BetterKiaLiveActivityPreviewImg} imgAlt="IMG ALT" imgPosition="50% 50%" color="#21262d" />
+                                imgSrc={NgOneAmbientLightTeaserImg} imgAlt="IMG ALT" imgPosition="50% 50%" color="#21262d" />
 
           <SideImageFeatureCard title="Custom Mobile App" description="This is an example description related to our ambient lighting system in the vehicle"
-                                imgSrc={BetterKiaLiveActivityPreviewImg} imgAlt="IMG ALT" imgPosition="50% 50%" color="#21262d" />
+                                imgSrc={BetterKiaPreviewImg} imgAlt="IMG ALT" imgPosition="50% 5%" color="#21262d" />
         </Stack>
       </Container>
 

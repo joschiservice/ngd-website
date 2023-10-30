@@ -19,7 +19,7 @@ export function SideImageFeatureCard({ title, description, imgSrc, imgAlt, imgPo
                 <Image alt={imgAlt} src={imgSrc} fill={true} style={{ objectFit: "cover", objectPosition: imgPosition }} />
             </Box>
 
-            <Box mb="sm" pt="xl">
+            <Box mb="sm" pt="xl" mr="xl">
                 <Title order={2} color="white">{title}</Title>
                 <Text style={{ color: "#bebebe" }}>{description}</Text>
             </Box>
