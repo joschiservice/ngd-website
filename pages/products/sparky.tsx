@@ -21,7 +21,7 @@ const PRODUCT_NAME = "Sparky";
 const PAGE_CONFIG = {
   productHeadline: "The <highlight>Pro</highlight>-Upgrade for your Kia & Hyundai EV",
   productDescription: "Bring your Kia & Hyundai experience to the next level and unlock brand-new features you will love. Unlock your car using your favorite voice assistant, create more than two HVAC schedules or preventing your eyes from getting burnt by enabling the dark mode.",
-  releaseInfo: "Coming 2023 to iOS devices",
+  releaseInfo: "Coming 2024 to iOS devices",
   features: [
     {
       title: "Siri Integration",
