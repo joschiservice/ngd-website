@@ -3,12 +3,12 @@ import {GrArticle} from "react-icons/gr"
 import {Box, createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 
 interface Props {
-  children: any;
+  children?: any;
 }
 
 const theme = createTheme({ palette: {mode: 'dark'}});
 
-export function AdminLayout({children}: Props) {
+export function AdminLayout({children = null}: Props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
