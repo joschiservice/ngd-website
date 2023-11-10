@@ -10,7 +10,8 @@ import {animated, easings, useSpring} from "@react-spring/web";
 import React from "react";
 import BetterKiaSiriPreviewImg from "../../public/img/better-kia-siri-preview.png";
 import BetterKiaLiveActivityPreviewImg from "../../public/img/better-kia-live-activity-preview.png";
-import BetterKiaDriveHistoryPreviewImg from "../../public/img/better-kia-drive-history-preview.jpg";
+import BetterKiaDriveHistoryPreviewImg from "../../public/img/better-kia-drive-history-preview.png";
+import BetterKiaHvacSchedulesPreviewImg from "../../public/img/better-kia-hvac-schedules.png"
 import {IoChevronDown} from "react-icons/io5";
 import {useMediaQuery} from "@mantine/hooks";
 import {SparkyHero} from "@/components/heros/SparkyHero";
@@ -50,7 +51,7 @@ const PAGE_CONFIG = {
       description: "Get relevant information about your recent trips",
       imgAlt: "",
       img: BetterKiaDriveHistoryPreviewImg,
-      imgPosition: "50% 6%",
+      imgPosition: "50% 18%",
       imgHeightDesktop: 300,
       imgHeightMobile: 200,
       paddingBottom: undefined,
@@ -60,8 +61,8 @@ const PAGE_CONFIG = {
       title: "Improved Schedules",
       description: "Don't be limited to just 2 schedules",
       imgAlt: "",
-      img: BetterKiaLiveActivityPreviewImg, // ToDo: Image
-      imgPosition: "50% 94%",
+      img: BetterKiaHvacSchedulesPreviewImg,
+      imgPosition: "50% 18%",
       imgHeightDesktop: 300,
       imgHeightMobile: 200,
       paddingBottom: undefined,

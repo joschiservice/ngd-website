@@ -1,7 +1,7 @@
 import { BsFillLightningChargeFill } from "react-icons/bs";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
-import { Box, Container, Divider, Flex, Space, Stack, Text, Title } from "@mantine/core";
+import { Box, Container, Divider, Flex, MantineProvider, Space, Stack, Text, Title } from "@mantine/core";
 import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose } from "react-icons/md";
@@ -10,6 +10,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import Head from "next/head";
 import { useState } from "react";
 import { BRAND_NAME, IS_BLOG_ENABLED } from "@/config";
+import {rtlCache} from "@/rtl-cache";
 
 interface Props {
   children: any,
@@ -123,7 +124,14 @@ export default function PublicLayout({ children, title, hoverNavbar = true }: Pr
   const isSmallDevice = useMediaQuery('(max-width: 1020px)');
 
   return (
-    <>
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        colorScheme: 'dark',
+      }}
+      emotionCache={rtlCache}
+    >
       <Head>
         <title>{`${title} | ${BRAND_NAME}`}</title>
         <meta name="theme-color" content="#000000" />
@@ -180,6 +188,6 @@ export default function PublicLayout({ children, title, hoverNavbar = true }: Pr
           </Flex>
         </Container>
       </div>
-    </>
+    </MantineProvider>
   )
 }
