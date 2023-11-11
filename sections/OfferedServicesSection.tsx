@@ -18,7 +18,7 @@ const SECTION_DESCRIPTION = "Transform your car into a world of endless entertai
 
 const OFFERED_SERVICES_PRODUCTS = [
   {
-    title: "Reactive Ambient Light",
+    title: "Smart Ambient Light",
     description: "Turn your ride into a special experience for you and your passengers and feel like driving in a spaceship at night. Our reactive lighting system does offer automatic triggers to automatically switch the light theme, when switching into sport mode and much more.",
     icon: <HiOutlineLightBulb color="#339557" size={40} />
   },

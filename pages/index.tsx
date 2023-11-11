@@ -3,6 +3,8 @@ import Image from "next/image";
 import backgroundImage from "@/public/img/tesla-rear-light.jpg";
 import hyundaiInStyleImage from "@/public/img/hyundai-in-style.jpg";
 import polestarImage from "@/public/img/polestar-night.jpg";
+import ev6Image from "@/public/img/hyundai-motor-group-eQFLCKHklwg-unsplash.jpg";
+import ioniq5Charging from "@/public/img/hyundai-motor-group-zHXYTK6RYmk-unsplash.jpg";
 import {animated, easings, useSpring} from "@react-spring/web";
 import {
   Space,
@@ -28,7 +30,7 @@ const PAGE_CONFIG = {
   faq: [
     { 
       question: 'Are you only building products for BEV vehicles and why?', 
-      answer: 'We are primarily building and testing product prototypes optimized for electric vehicles, we might also release some products, which may be independent of the type of vehicle. We have decided to go this way as we would like to help the world to complete the transition to emission-free vehicles in the next coming years and believe that electric vehicles are the most suitable ones for this transition as of the current state of technology and infrastructure.' 
+      answer: 'We are primarily building and testing product prototypes optimized for electric vehicles, but we might also release some products, which may be independent of the type of vehicle. We have decided to go this way as we would like to help the world to complete and accelerate the transition to emission-free vehicles in the next years and we believe that electric vehicles are the most suitable ones for this transition as of the current state of technology and infrastructure.'
     },
     {
       question: 'Is this a commercial project and how is this project funded?',
@@ -139,9 +141,21 @@ function HeroImages() {
       src: polestarImage,
       alt: "Polestar2",
       objectPosition: "70%"
+    },
+    {
+      id: 4,
+      src: ev6Image,
+      alt: "Kia EV6",
+      objectPosition: "90%"
+    },
+    {
+      id: 5,
+      src: ioniq5Charging,
+      alt: "Hyundai Ioniq 5",
+      objectPosition: "80%"
     }
   ])
-  const [activeImageId, setActiveImageId] = useState(1);
+  const [activeImageId, setActiveImageId] = useState(4);
   const activeImageIdRef = useRef(activeImageId);
   activeImageIdRef.current = activeImageId;
 

@@ -21,7 +21,7 @@ const PRODUCT_NAME = "Sparky";
 
 const PAGE_CONFIG = {
   productHeadline: "The <highlight>Pro</highlight>-Upgrade for your Kia & Hyundai EV",
-  productDescription: "Bring your Kia & Hyundai experience to the next level and unlock brand-new features you will love. Unlock your car using your favorite voice assistant, create more than two HVAC schedules or preventing your eyes from getting burnt by enabling the dark mode.",
+  productDescription: "Bring your Kia & Hyundai experience to the next level and unlock brand-new features you will love. Unlock your car using your favorite voice assistant, create more than two HVAC schedules or simply prevent your eyes from getting burnt by switching to the dark side (mode).",
   releaseInfo: "Coming 2024 to iOS devices",
   features: [
     {
@@ -37,7 +37,7 @@ const PAGE_CONFIG = {
     },
     {
       title: "Always Up-To-Date",
-      description: "View charging information at a glance",
+      description: "View real-time charging information at a glance",
       img: BetterKiaLiveActivityPreviewImg,
       imgAlt: `${PRODUCT_NAME} charging live activity demonstration`,
       imgPosition: "50% 94%",
