@@ -53,10 +53,6 @@ const DATA = {
   ],
   footerNavItems: [
     {
-      title: "Products",
-      href: "/products"
-    },
-    {
       title: "Blog",
       href: "/blog",
       isDisabled: !IS_BLOG_ENABLED
