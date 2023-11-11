@@ -20,6 +20,7 @@ import { FAQ } from "@/components/FAQ";
 import { OfferedServicesSection } from "@/sections/OfferedServicesSection";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Head from "next/head";
 
 const PAGE_CONFIG = {
   hero: {
@@ -47,6 +48,7 @@ const PAGE_CONFIG = {
   spaceBetweenSections: 80
 }
 
+// Unused
 export const metadata: Metadata = {
   title: `${BRAND_NAME} | Software & Hardware Upgrades for Electric Vehicles`,
   description: `Discover cutting-edge hardware and software solutions for electric vehicles at ${BRAND_NAME}. We specialize in designing and developing advanced technology to accelerate the electric revolution.`,
@@ -73,6 +75,15 @@ export default function NewLandingPage() {
 
   return (
     <PublicLayout title="Home">
+      <Head>
+        <title>{`${BRAND_NAME} | Software & Hardware Upgrades for Electric Vehicles`}</title>
+        <meta name="description" content={`Discover cutting-edge hardware and software solutions for electric vehicles at ${BRAND_NAME}. We specialize in designing and developing advanced technology to accelerate the electric revolution.`}/>
+        <meta property="og:title" content={`${BRAND_NAME} | Software & Hardware Upgrades for Electric Vehicles`} />
+        <meta property="og:site_name" content={`${BRAND_NAME} | Software & Hardware Upgrades for Electric Vehicles`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:description " content={`Discover cutting-edge hardware and software solutions for electric vehicles at ${BRAND_NAME}. We specialize in designing and developing advanced technology to accelerate the electric revolution.`} />
+        <meta property="og:image " content={backgroundImage.src} />
+      </Head>
       <div style={{background: "black"}}>
         {
           isSmallDevice ? (

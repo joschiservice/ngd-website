@@ -7,6 +7,7 @@ import FreewireImage from "@/public/img/FreewireChargingStation.jpeg";
 import {DataGrid, GridColDef, GridValueFormatterParams} from '@mui/x-data-grid';
 import {useTheme} from "@mui/material";
 import dayjs from "dayjs";
+import {IS_DEV_ENV} from "@/config";
 
 const posts: Post[] = [
   {
@@ -81,4 +82,11 @@ export default function AdminBlogPage() {
       </div>
     </AdminLayout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    notFound: !IS_DEV_ENV,
+    props: {}
+  }
 }
