@@ -7,6 +7,7 @@ import { FAQ } from "@/components/FAQ";
 import { SideImageFeatureCard } from "@/components/cards/SideImageFeatureCard";
 import BetterKiaPreviewImg from "../../public/img/better-kia-preview.png";
 import NgOneAmbientLightTeaserImg from "../../public/img/ng-one-ambient-light-teaser.png";
+import {useMediaQuery} from "@mantine/hooks";
 
 
 const PRODUCT_NAME = "NG 001";
@@ -29,7 +30,7 @@ const PAGE_CONFIG = {
       description: 'Our special ambient lightning system is one of the smartest systems using in-vehicle data. It automatically dims for the night to avoid distractions and switches the color based on the current drive mode to always create the right mood.',
       img: NgOneAmbientLightTeaserImg,
       imgAlt: 'Glowing ambient light strip under the in-car infotainment display',
-      imgPosition: '50% 50%',
+      imgPosition: '50% 95%',
       color: '#21262d'
     },
     {
@@ -44,13 +45,15 @@ const PAGE_CONFIG = {
 }
 
 export default function NgOnePage() {
+  const isSmallDevice = useMediaQuery('(max-width: 1020px)');
+
   return (
     <PublicLayout title={PRODUCT_NAME} hoverNavbar={true}>
       <ImageHero img={ngOneTeaserImage} imgAlt={PRODUCT_NAME}>
-        <Title lh={1.2} style={{ fontSize: 45 }} color="white">
+        <Title lh={1.2} style={{ fontSize: (isSmallDevice ? 35 : 45) }} color="white">
           {PRODUCT_NAME} - Our Development Vehicle
         </Title>
-        <Text my="xl" size="lg">
+        <Text my="xl" size={isSmallDevice ? "md" : "lg"}>
           The {PRODUCT_NAME} is our very first electric development vehicle, where we continuously develop our first set of demo hardware & software products.
         </Text>
       </ImageHero>

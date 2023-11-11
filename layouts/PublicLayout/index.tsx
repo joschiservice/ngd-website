@@ -138,7 +138,9 @@ export default function PublicLayout({ children, title, hoverNavbar = true }: Pr
       </Head>
       <div style={{ background: "black" }}>
         <div style={{ width: "100vw", padding: 18, display: "flex", justifyContent: "space-between", position: hoverNavbar ? "absolute" : "relative", zIndex: 2 }}>
-          <BsFillLightningChargeFill className={styles.neonLogo} style={{ fontSize: 28 }} />
+          <Link href="/">
+            <BsFillLightningChargeFill className={styles.neonLogo} style={{ fontSize: 28 }} />
+          </Link>
           <div>
             {
               isSmallDevice ? <HamburgerMenu items={navItems} /> :
