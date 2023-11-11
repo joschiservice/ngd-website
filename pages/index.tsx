@@ -1,6 +1,7 @@
 import styles from "@/styles/Home.module.css";
 import Image from "next/image";
 import backgroundImage from "@/public/img/tesla-rear-light.jpg";
+import metaImage from "@/public/img/ng_one_teaser.png"
 import hyundaiInStyleImage from "@/public/img/hyundai-in-style.jpg";
 import polestarImage from "@/public/img/polestar-night.jpg";
 import ev6Image from "@/public/img/hyundai-motor-group-eQFLCKHklwg-unsplash.jpg";
@@ -79,10 +80,10 @@ export default function NewLandingPage() {
         <title>{`${BRAND_NAME} | Software & Hardware Upgrades for Electric Vehicles`}</title>
         <meta name="description" content={`Discover cutting-edge hardware and software solutions for electric vehicles at ${BRAND_NAME}. We specialize in designing and developing advanced technology to accelerate the electric revolution.`}/>
         <meta property="og:title" content={`${BRAND_NAME} | Software & Hardware Upgrades for Electric Vehicles`} />
-        <meta property="og:site_name" content={`${BRAND_NAME} | Software & Hardware Upgrades for Electric Vehicles`} />
+        <meta property="og:site_name" content={BRAND_NAME} />
         <meta property="og:type" content="website" />
         <meta property="og:description" content={`Discover cutting-edge hardware and software solutions for electric vehicles at ${BRAND_NAME}. We specialize in designing and developing advanced technology to accelerate the electric revolution.`} />
-        <meta property="og:image" content={backgroundImage.src} />
+        <meta property="og:image" content={metaImage.src} />
       </Head>
       <div style={{background: "black"}}>
         {
