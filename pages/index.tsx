@@ -47,7 +47,7 @@ const PAGE_CONFIG = {
   spaceBetweenSections: 80
 }
 
-export const metdata: Metadata = {
+export const metadata: Metadata = {
   title: `${BRAND_NAME} | Software & Hardware Upgrades for Electric Vehicles`,
   description: `Discover cutting-edge hardware and software solutions for electric vehicles at ${BRAND_NAME}. We specialize in designing and developing advanced technology to accelerate the electric revolution.`,
   openGraph: {
