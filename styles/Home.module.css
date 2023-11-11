@@ -3,9 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3rem;
-  min-height: 100vh;
   min-height: -webkit-fill-available;
+  min-height: 100vh;
+  background-color: black;
 }
 
 .neonLogo {
@@ -15,12 +15,21 @@
 
 .navLink {
   opacity: 0.6;
-  font-size: 20px;
-  transition: opacity .2s ease-in-out;
+  font-size: 18px;
+  font-weight: 400;
+  transition: opacity, text-shadow .2s ease-in-out;
+  margin-left: 14px;
+  margin-right: 14px;
 }
 
 .navLink:hover {
   opacity: 1;
+
+  text-shadow:
+          0 0 21px #fff,
+          0 0 42px #fff,
+          0 0 82px #fff,
+          0 0 92px #fff;
 }
 
 
