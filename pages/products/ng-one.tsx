@@ -17,16 +17,16 @@ const PAGE_CONFIG = {
   faq: [
     {
       question: `What's the car, which is used as the ${PRODUCT_NAME} and why did you choose this car?`,
-      answer: `The ${PRODUCT_NAME} is based on the 2020 Kia e-Soul 64kwh. We choose to use the Kia for this project, as we didn't have the budget to buy a specific car and therefore are using the private car of the founder.`
+      answer: `The ${PRODUCT_NAME} is based on the 2020 Kia e-Soul 64 kwh. We chose to use the Kia for this project, as we didn't have the budget to buy a specific car and therefore are using the private car of the founder.`
     },
     {
       question: "Which products will be released later and what's the state of the products?",
-      answer: "This decision will be based on market research, community feedback and pre-orders in the future. We can't really say anything yet, as we just recently made this project public and as we are still developing and optimizing prototypes. Releasing any of this products will require quite some fine tuning and testing. One exception is our Sparky app, which might be released soon."
+      answer: "This decision will be based on market research, community feedback, and pre-orders in the future. We can't really say anything yet, as we just recently made this project public and are still developing and optimizing prototypes. Releasing any of these products will require quite some fine-tuning and testing. One exception is our Sparky app, which might be released soon."
     }
   ],
   features: [
     {
-      title: 'Ambient Lightning',
+      title: 'Ambient Lighting',
       description: 'Our special ambient lightning system is one of the smartest systems using in-vehicle data. It automatically dims for the night to avoid distractions and switches the color based on the current drive mode to always create the right mood.',
       img: NgOneAmbientLightTeaserImg,
       imgAlt: 'Glowing ambient light strip under the in-car infotainment display',
@@ -35,7 +35,7 @@ const PAGE_CONFIG = {
     },
     {
       title: 'Custom Mobile App',
-      description: `Our upcoming Sparky mobile app for Kia & Hyundai electric vehicles is being actively tested on our ${PRODUCT_NAME} prototype. The mobile app is also the primary option for configuring the ambient lightning to your needs.`,
+      description: `Our upcoming Sparky mobile app for Kia & Hyundai electric vehicles is being actively tested on our ${PRODUCT_NAME} prototype. The mobile app is also the primary option for configuring the ambient lighting to your needs.`,
       img: BetterKiaPreviewImg,
       imgAlt: 'Screenshot of the Sparky iOS app, which is displaying information about the Kia e-Soul',
       imgPosition: '50% 5%',

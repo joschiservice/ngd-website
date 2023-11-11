@@ -29,18 +29,18 @@ const PAGE_CONFIG = {
   },
   faq: [
     { 
-      question: 'Are you only building products for BEV vehicles and why?', 
-      answer: 'We are primarily building and testing product prototypes optimized for electric vehicles, but we might also release some products, which may be independent of the type of vehicle. We have decided to go this way as we would like to help the world to complete and accelerate the transition to emission-free vehicles in the next years and we believe that electric vehicles are the most suitable ones for this transition as of the current state of technology and infrastructure.'
+      question: 'Are you only developing products for BEV vehicles, and why?',
+      answer: 'We are primarily building and testing product prototypes optimized for electric vehicles, but we might also release some products that could be independent of the type of vehicle. We have decided to go this way as we would like to help the world complete and accelerate the transition to emission-free vehicles in the next few years and we believe that electric vehicles are the most suitable ones for this transition given the current state of technology and infrastructure.'
     },
     {
       question: 'Is this a commercial project and how is this project funded?',
-      answer: 'While we are trying to work on our current in-development product prototypes as professional as possible, we are not an officially registered company (yet). So far, the development of prototype products is 100% funded by our founder.'
+      answer: 'While we are trying to work on our current in-development product prototypes as professionally as possible, we are not an officially registered company (yet). So far, the development of prototype products has been 100% funded by our founder.'
     },
     {
       question: 'How can I support this project?',
       answer: 
       <>
-        Firstly, you can share this project with people, who might be interested in this project. If you think you can support us in other ways, you can contact us at <Link href="mailto:contact@nextgendrive.com" style={{color: 'white'}}>contact@nextgendrive.com</Link>.
+        Firstly, you can share this project with people who might be interested in it. If you think you can support us in other ways, you can contact us at <Link href="mailto:contact@nextgendrive.com" style={{color: 'white'}}>contact@nextgendrive.com</Link>.
       </>
     }
   ],
