@@ -81,8 +81,8 @@ export default function NewLandingPage() {
         <meta property="og:title" content={`${BRAND_NAME} | Software & Hardware Upgrades for Electric Vehicles`} />
         <meta property="og:site_name" content={`${BRAND_NAME} | Software & Hardware Upgrades for Electric Vehicles`} />
         <meta property="og:type" content="website" />
-        <meta property="og:description " content={`Discover cutting-edge hardware and software solutions for electric vehicles at ${BRAND_NAME}. We specialize in designing and developing advanced technology to accelerate the electric revolution.`} />
-        <meta property="og:image " content={backgroundImage.src} />
+        <meta property="og:description" content={`Discover cutting-edge hardware and software solutions for electric vehicles at ${BRAND_NAME}. We specialize in designing and developing advanced technology to accelerate the electric revolution.`} />
+        <meta property="og:image" content={backgroundImage.src} />
       </Head>
       <div style={{background: "black"}}>
         {
