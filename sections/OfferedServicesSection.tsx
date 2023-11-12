@@ -37,27 +37,6 @@ const OFFERED_SERVICES_PRODUCTS = [
 export function OfferedServicesSection() {
     const isSmallDevice = useMediaQuery('(max-width: 600px)');
     const isMediumDevice = useMediaQuery('(max-width: 1020px)');
-
-    const [featureItemsRef, featureItemsAnimation] = useInView(
-      () => ({
-        from: {
-          opacity: 0,
-          y: 100,
-        },
-        to: {
-          opacity: 1,
-          y: 0,
-        },
-        config: {
-          easing: easings.easeOutExpo,
-          duration: 1500
-        }
-      }),
-      {
-        rootMargin: '0% 0%',
-        once: true
-      }
-    )
     
     return (
         <Container size="xl">
@@ -68,14 +47,12 @@ export function OfferedServicesSection() {
 
           <Space h={80} />
 
-          <animated.div ref={featureItemsRef} style={featureItemsAnimation}>
-            <SimpleGrid cols={isSmallDevice ? 1 : (isMediumDevice ? 2 : 3)} mt="xl">
-              {
-                OFFERED_SERVICES_PRODUCTS.map((item, index) => 
+          <SimpleGrid cols={isSmallDevice ? 1 : (isMediumDevice ? 2 : 3)} mt="xl">
+            {
+              OFFERED_SERVICES_PRODUCTS.map((item, index) =>
                 <IconFeatureCard key={index} title={item.title} description={item.description} icon={item.icon} />)
-              }
-            </SimpleGrid>
-          </animated.div>
+            }
+          </SimpleGrid>
         </Container>
     )
 }
