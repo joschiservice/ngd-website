@@ -157,8 +157,8 @@ function HeroImages() {
     {
       id: 4,
       src: ev6Image,
-      alt: "Kia EV6",
-      objectPosition: "90%"
+      alt: "Kia EV9",
+      objectPosition: "100% 50%"
     },
     {
       id: 5,
