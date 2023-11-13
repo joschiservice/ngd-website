@@ -11,7 +11,8 @@ import React from "react";
 import BetterKiaSiriPreviewImg from "../../public/img/better-kia-siri-preview.png";
 import BetterKiaLiveActivityPreviewImg from "../../public/img/better-kia-live-activity-preview.png";
 import BetterKiaDriveHistoryPreviewImg from "../../public/img/better-kia-drive-history-preview.png";
-import BetterKiaHvacSchedulesPreviewImg from "../../public/img/better-kia-hvac-schedules.png"
+import BetterKiaHvacSchedulesPreviewImg from "../../public/img/better-kia-hvac-schedules.png";
+import BetterKiaShortcutsPreviewImg from "../../public/img/better-kia-shortcuts-preview.png";
 import {IoChevronDown} from "react-icons/io5";
 import {useMediaQuery} from "@mantine/hooks";
 import {SparkyHero} from "@/components/heros/SparkyHero";
@@ -63,6 +64,17 @@ const PAGE_CONFIG = {
       imgAlt: "",
       img: BetterKiaHvacSchedulesPreviewImg,
       imgPosition: "50% 18%",
+      imgHeightDesktop: 300,
+      imgHeightMobile: 200,
+      paddingBottom: undefined,
+      color: "#21262d"
+    },
+    {
+      title: "Support for Apple Shortcuts",
+      description: "Do whatever you want with custom automations",
+      imgAlt: "Apple Shortcuts app",
+      img: BetterKiaShortcutsPreviewImg,
+      imgPosition: "50% 7%",
       imgHeightDesktop: 300,
       imgHeightMobile: 200,
       paddingBottom: undefined,
